@@ -1,0 +1,2 @@
+B_Bacteria,D_Detritus,N_Nitrogen,P_Bacterivores,Se_Sediments,Mo_Mosquito,alpha_organicmatterCNratio,thetaA_detritusCflux,thetaN_rainNitrogenFlux,mB_BacteriaMortalityRate,mP_BacterivoresMortalityRate,rB_BacteriaRespirationRate,rP_BacterivoresRespirationRate,rM_MosquitoRespirationRate,s_SedimentationRate,uB_BacteriaConsumptionRate,uP_BacterivoresPredationRate,uM_MosquitoesPredationRate,y_PlantNitrogenUptakeRate
+5.00,371.25,0.817,27.85,NA,303.75,6.625,5.39,0.0751,0.001,0.01,0.0005,0.0014,0.01,0.01,0.001,0.014,0.5872,0.1026
