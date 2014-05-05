@@ -36,6 +36,9 @@
 
 \section{05 May 2014}
 
+Can we monitor the genetics of pitcher plant inquilines in response to
+nutrient additions?
+
 Sped read Ellison et al. 2014 Sys Bot
 \begin{itemize}
 \item Could building syngamen networks using hybridization and trait
