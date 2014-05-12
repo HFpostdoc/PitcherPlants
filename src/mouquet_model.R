@@ -1,112 +1,9 @@
-%%%NOTE: for help with latex symbols look here http://mirror.unl.edu/ctan/info/symbols/comprehensive/symbols-a4.pdf.
-\documentclass[12pt]{article}
-\usepackage{color}
-\usepackage{cite}
-\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-%\usepackage{pdflscape}        %single page landscape
-                                %mode \begin{landscape} \end{landscape}
-\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
-%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
-\usepackage{multicol} % \begin{multicols}{number of columns} \end{multicols}
-% \usepackage{lineno} %add lines numbers 
-\usepackage{graphicx}
-\usepackage{amssymb}
-\usepackage{Sweave}
-\newcommand{\etal}{\textit{et al.}}
-\usepackage{hyperref}  %\hyperref[label_name]{''link text''}
-                       %\hyperlink{label}{anchor caption}
-                       %\hypertarget{label}{link caption}
-\linespread{1.5}
+###Analysis of the Mouquet 2008 P-plant inq. web
+###MKLau 12 May 2014
+###This was from pre-liminary analyses for NSF-PRFB
 
-\title{Pitcher Networks}
-\author{M.K. Lau}
-%\date{}                                           % Activate to display a given date or no date
-
-\begin{document}
-\maketitle
-%\linenumbers %%add line numbers
-
-%\setcounter{tocdepth}{3}  %%activate to number sections
-%\tableofcontents
-
-%\thispagestyle{empty}
-%\setcounter{page}{0}
-%\setcounter{secnumdepth}{-1}  %activate to start numbering from one
-%on the second page
-
-\section{12 May 2014}
-
-Preliminary Hawley analysis looking for temporal trends.
-
-<<>>=
-####Data are NOT published. Do not distribute
-h99 <- read.csv('./data/Hawley1999colonization.csv')
-h99 <- h99[,-ncol(h99)]
-h99[is.na(h99)] <- 0
-                                        #fix date error
-h99$date[h99$date=='19997020'] <- '19990720'
-                                        #split individual obs
-h99 <- split(h99,paste(h99[,1],h99[,2],h99[,3],h99[,5]))
-                                        #matricizing
-h99.com <- matrix(0,nrow=length(h99),ncol=length(unique(h99[[1]]$inquiline)))
-colnames(h99.com) <- unique(h99[[1]]$inquiline)
-for (i in 1:length(h99)){
-  for (j in 1:nrow(h99[[i]])){
-    h99.com[i,colnames(h99.com)==h99[[i]][j,4]] <- h99[[i]][j,6]
-  }
-}
-h99.env <- do.call(rbind,lapply(names(h99),function(x) unlist(strsplit(x,split=' '))))
-colnames(h99.env) <- c('trt','plant','leaf','date')
-                                        #make date an date vector
-h99.env[,4] <- paste(substr(h99.env[,4],1,4),substr(h99.env[,4],5,6),substr(h99.env[,4],7,8),sep='-')
-h99.date <- as.Date(h99.env[,4])
-                                        #plot of species dynamics across sampling dates
-pdf('./results/h99_time.pdf')
-par(mfrow=c(3,3))
-for (i in 1:ncol(h99.com)){
-  plot(h99.com[,i]~h99.date,main=colnames(h99.com)[i])
-  lines(spline(h99.com[,i]~h99.date))
-}
-dev.off()
-
-
-@ 
-
-\section{06 May 2014}
-
-Pitcher Plant temporal data:
-
-\begin{itemize}
-\item Hawley and Molly bogs 1999-2000
-\item Data described in Ellison et al. 2003 Evolutionary ecology of
-  carnivorous plants.
-
-\end{itemize}
-
-
-\section{05 May 2014}
-
-Can we monitor the genetics of pitcher plant inquilines in response to
-nutrient additions?
-
-Sped read Ellison et al. 2014 Sys Bot
-\begin{itemize}
-\item Could building syngamen networks using hybridization and trait
-  information tell us about the ecological and evolutionary responses
-  of pitcher plants?
-\item Genetic responses to climate change?
-\item Community genetics?
-\end{itemize}
-
-
-\section{28 Mar 2014}
-
-Mouquet network mutualism analysis:
-
-<<>>=
-
-library(enaR)
-                                        #
+##Ascendency of Mouquet food web
+##Mouquet et al. 2008
 table1 <- t(read.csv('../data/mouq_inq_values.txt'))
 math.values <- data.frame(t(table1))
 colnames(math.values) <- sapply(colnames(t(table1)),function(x) unlist(strsplit(x,split='_'))[1])
@@ -132,6 +29,7 @@ inq.C[rownames(inq.C)=='mosquito',colnames(inq.C)=='atmosphere'] <- (rM*uM*P)
                                         #need to get C:N ratios for nodes
                                         #inq.N[rownames(inq.N)=='',colnames(inq.N)==''] <- 
                                         #load model into enaR for ascendency
+library(enaR)
 flow.nodes <- c(3,4,5,6,7)
 flow <- inq.C[flow.nodes,flow.nodes]
 input <- inq.C[rownames(inq.C)=='ants',flow.nodes]
@@ -164,7 +62,7 @@ hist(c(tro.asc$ASC.CAP,inqC.asc$ASC.CAP),border='white',breaks=10,
      col=grey(0.3),xlim=c(0.2,0.9),ylim=c(0,15),main='',xlab='',ylab='')
                                         #points(inqC.asc$ASC.CAP,1,pch=19)
 arrows((inqC.asc$ASC.CAP-0.0095),3,(inqC.asc$ASC.CAP-0.0095),1.5,lwd=5,col='red')
-                                        #
+
 detach(math.values)
                                         #fig 4
 flow <- matrix(c(0,0,0,
@@ -201,35 +99,5 @@ test2 <- pack(flow=flow,
              living=living)
                                         #
 enaAscendency(test2) - enaAscendency(test1)
-
-@ 
-
-
-%\subsection{}
-
-%% %%Figure construction
-%% <<echo=false,results=hide,label=fig1,include=false>>=
-%% @ 
-
-
-%% %%Figure plotting
-%% \begin{figure} 
-%% \begin{center} 
-%% <<label=fig1,fig=TRUE,echo=false>>=
-%% <<fig1>> 
-%% @ 
-%% \end{center} 
-%% \caption{}
-%% \label{fig:one}
-%% \end{figure}
-
-
-%% %%Activate for bibtex vibliography
-%% \cite{goossens93}
-%% \bibliographystyle{plain}
-%% \bibliography{/Users/Aeolus/Documents/bibtex/biblib}
-
-
-\end{document}  
 
 
