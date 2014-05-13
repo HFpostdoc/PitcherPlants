@@ -28,10 +28,16 @@ rm.node <- function(x){
 }
 
 data(enaModels)
+data(enaModelInfo)
 select <- unlist(lapply(enaModels,function(x) 
                         ((all(is.na(x%v%'export')==FALSE)
                           &
-                          all((is.na(x%v%'respiration')==FALSE))))))
+                          all((is.na(x%v%'respiration')==FALSE))
+                          )
+                         )
+                        )
+                 )
+select <- (select==TRUE&enaModelInfo=='trophic')
 out <- list()
 for (k in 1:length(select[select==TRUE])){
 x <- enaModels[select][[k]]
@@ -65,11 +71,20 @@ out.cor <- unlist(lapply(out,function(x) cor(x)[1,2]))
 hist(out.cor)
 plot(density(out.cor))
 
+names(out)[out.cor<=0]
+
+plot(out$'Lake Findley ',type='l')
+plot(out$'Swartkops Estuary  15',type='l')
+
 ###Preliminary Hawley analysis looking for temporal trends.
 ####Data are NOT published. Do not distribute
+###(a1=open, a2=plug 3 weeks and a3=plug 6 weeks)
+
 h99 <- read.csv('./data/Hawley1999colonization.csv')
 h99 <- h99[,-ncol(h99)]
 h99[is.na(h99)] <- 0
+                                        #limit to open pitchers
+h99 <- h99[h99$treatment=='a1',]
                                         #fix date error
 h99$date[h99$date=='19997020'] <- '19990720'
                                         #split individual obs
@@ -88,10 +103,32 @@ colnames(h99.env) <- c('trt','plant','leaf','date')
 h99.env[,4] <- paste(substr(h99.env[,4],1,4),substr(h99.env[,4],5,6),substr(h99.env[,4],7,8),sep='-')
 h99.date <- as.Date(h99.env[,4])
                                         #plot of species dynamics across sampling dates
-pdf('./results/h99_time.pdf')
+png('./results/h99_time.pdf')
 par(mfrow=c(3,3))
 for (i in 1:ncol(h99.com)){
   plot(h99.com[,i]~h99.date,main=colnames(h99.com)[i])
   lines(spline(h99.com[,i]~h99.date))
+}
+dev.off()
+                                        #pairs plot
+source('/Users/Aeolus/projects/dissertation/projects/lcn/docs/LCO_analyses/source/pairs.R')
+png('./results/h99_pairs.pdf')
+pairs(h99.com,lower.panel=panel.cor,upper.panel=panel.lm)
+dev.off()
+                                        #temporal pattern for a single species
+head(h99.env);tail(h99.env)
+tpl <- paste(h99.env[,1],h99.env[,2],h99.env[,3]) #treatment plant leaf
+tpl.date <- split(h99.env[,4],tpl)
+tpl.date <- lapply(tpl.date,as.Date)
+                                        #plot all species all pitchers
+png('./results/h99_temporal.pdf')
+par(mfrow=c(3,3))
+for (k in 1:ncol(h99.com)){
+  i <- 1
+  h99.tpl <- split(I(h99.com[,k]/max(h99.com[,k])),tpl)
+  plot(h99.tpl[[i]]~tpl.date[[k]],xlab='Date',ylab=colnames(h99.com)[k],type='l',ylim=c(-0.25,1))
+  for (i in 2:length(h99.tpl)){
+    lines(spline(h99.tpl[[i]]~tpl.date[[k]]))
+  }
 }
 dev.off()
