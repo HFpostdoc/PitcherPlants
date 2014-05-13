@@ -4,7 +4,7 @@
 
 ##Ascendency of Mouquet food web
 ##Mouquet et al. 2008
-table1 <- t(read.csv('../data/mouq_inq_values.txt'))
+table1 <- t(read.csv('./data/mouq_inq_values.txt'))
 math.values <- data.frame(t(table1))
 colnames(math.values) <- sapply(colnames(t(table1)),function(x) unlist(strsplit(x,split='_'))[1])
                                         #build model from Figure 3
