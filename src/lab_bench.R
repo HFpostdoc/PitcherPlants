@@ -103,7 +103,7 @@ colnames(h99.env) <- c('trt','plant','leaf','date')
 h99.env[,4] <- paste(substr(h99.env[,4],1,4),substr(h99.env[,4],5,6),substr(h99.env[,4],7,8),sep='-')
 h99.date <- as.Date(h99.env[,4])
                                         #plot of species dynamics across sampling dates
-png('./results/h99_time.pdf')
+png('./results/h99_time.png')
 par(mfrow=c(3,3))
 for (i in 1:ncol(h99.com)){
   plot(h99.com[,i]~h99.date,main=colnames(h99.com)[i])
@@ -112,7 +112,7 @@ for (i in 1:ncol(h99.com)){
 dev.off()
                                         #pairs plot
 source('/Users/Aeolus/projects/dissertation/projects/lcn/docs/LCO_analyses/source/pairs.R')
-png('./results/h99_pairs.pdf')
+png('./results/h99_pairs.png')
 pairs(h99.com,lower.panel=panel.cor,upper.panel=panel.lm)
 dev.off()
                                         #temporal pattern for a single species
@@ -121,7 +121,7 @@ tpl <- paste(h99.env[,1],h99.env[,2],h99.env[,3]) #treatment plant leaf
 tpl.date <- split(h99.env[,4],tpl)
 tpl.date <- lapply(tpl.date,as.Date)
                                         #plot all species all pitchers
-png('./results/h99_temporal.pdf')
+png('./results/h99_temporal.png')
 par(mfrow=c(3,3))
 for (k in 1:ncol(h99.com)){
   i <- 1
