@@ -80,7 +80,7 @@ plot(out$'Swartkops Estuary  15',type='l')
 ####Data are NOT published. Do not distribute
 ###(a1=open, a2=plug 3 weeks and a3=plug 6 weeks)
 
-h99 <- read.csv('./data/Hawley1999colonization.csv')
+h99 <- read.csv('./data/Molly1999colonization.csv')
 h99 <- h99[,-ncol(h99)]
 h99[is.na(h99)] <- 0
                                         #limit to open pitchers
