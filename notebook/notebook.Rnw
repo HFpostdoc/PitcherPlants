@@ -38,7 +38,18 @@
 
 \begin{itemize}
 \item Currently running a simulation to examine Connectence -> Asc.
+\item Initial analyses of the Hawley and Molly datasets
 \end{itemize}
+
+
+\section{14 May 2014}
+
+Checked out foodweb package. Minimal utility with functions for basic
+structural analyses and 3D plotting of foodwebs.
+
+Meeting with Aaron: see Github PitcherPlant issues.
+
+Created Milestone for Threshold indicators in inquiline food webs.
 
 
 \section{13 May 2014}
