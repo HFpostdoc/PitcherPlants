@@ -43,15 +43,39 @@
 
 \section{15 May 2014}
 
-Looking at Early Warning Signals package.
+Using Early Warning Signals package for analyses. 
+
+Currently working on generating stats for the generic EWS.
+
+Go to ###mark
 
 <<>>=
 library(earlywarnings)
+source('../src/loadMolly1999.R')
+source('../src/loadHawley1999.R')
 
+## "h99" = all data split by pitcher
+## "h99.com" = community matrix where rows are pitchers
+## "h99.date" = date as numeric vector
+## "h99.env" = environmental data for each pitcher
+## "h99.tpl" = community data by treatment plant leaf vector
+## "h99.tpl.date" = date sampled for each leaf
+
+gews <- function(x,times){
+  out <- generic_ews(timeseries=data.frame(times,x))
+  out <- apply(out,2,function(x,y) cor(x,y),y=out[,1])
+  return(out)
+}
+                                        #
+###mark
+i <- 9
+test <- lapply(h99.tpl,function(x,i,times) gews(x[,i],times), i=i, times=h99.tpl.date[[1]])
+times <- h99.tpl.date[[k]]
+series <- h99.tpl[[k]][,9]
+out <- gews(series,times)
 
 
 @ 
-
 
 \section{14 May 2014}
 

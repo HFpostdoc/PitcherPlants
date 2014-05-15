@@ -34,6 +34,8 @@ head(h99.env);tail(h99.env)
 h99.tpl <- paste(h99.env[,1],h99.env[,2],h99.env[,3]) #treatment plant leaf
 h99.tpl.date <- split(h99.env[,4],h99.tpl)
 h99.tpl.date <- lapply(h99.tpl.date,as.Date)
+h99.tpl <- split(h99.com,h99.tpl)
+h99.tpl <- lapply(h99.tpl,function(x) matrix(x,ncol=ncol(h99.com)))
                                         #
-head(h99.env)
+print(all(h99.tpl[[1]] == h99.com[1:nrow(h99.tpl[[1]]),]))
 print('Finished!')
