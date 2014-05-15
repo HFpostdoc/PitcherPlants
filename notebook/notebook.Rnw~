@@ -34,42 +34,82 @@
 %\setcounter{secnumdepth}{-1}  %activate to start numbering from one
 %on the second page
 
+\section{Lab Bench}
+
+\begin{itemize}
+\item Currently running a simulation to examine Connectence -> Asc.
+\item Initial analyses of the Hawley and Molly datasets
+\end{itemize}
+
+
+\section{14 May 2014}
+
+Checked out foodweb package. Minimal utility with functions for basic
+structural analyses and 3D plotting of foodwebs.
+
+Meeting with Aaron: see Github PitcherPlant issues.
+
+Created Milestone for Threshold indicators in inquiline food webs.
+
+
+\section{13 May 2014}
+
+Summary:
+\begin{itemize}
+\item Generally, there's a positive relationship between conncetance
+  and ascendency
+\item 
+\end{itemize}
+
+
+Starting the ``Lab Bench'' script file. This will serve as a free
+flowing document for new code that will be transferred into permanent
+script files that can be referenced via the notebook either as chunks
+or inbedded figures.
+
+
+
+
 \section{12 May 2014}
 
-Preliminary Hawley analysis looking for temporal trends.
+Looking at the Hawley 1999 dataset. 
+\begin{enumerate}
+\item Data management and exploration
+\item Plotting dynamics of all pitchers over time
+\end{enumerate}
 
-<<>>=
-####Data are NOT published. Do not distribute
-h99 <- read.csv('./data/Hawley1999colonization.csv')
-h99 <- h99[,-ncol(h99)]
-h99[is.na(h99)] <- 0
-                                        #fix date error
-h99$date[h99$date=='19997020'] <- '19990720'
-                                        #split individual obs
-h99 <- split(h99,paste(h99[,1],h99[,2],h99[,3],h99[,5]))
-                                        #matricizing
-h99.com <- matrix(0,nrow=length(h99),ncol=length(unique(h99[[1]]$inquiline)))
-colnames(h99.com) <- unique(h99[[1]]$inquiline)
-for (i in 1:length(h99)){
-  for (j in 1:nrow(h99[[i]])){
-    h99.com[i,colnames(h99.com)==h99[[i]][j,4]] <- h99[[i]][j,6]
-  }
-}
-h99.env <- do.call(rbind,lapply(names(h99),function(x) unlist(strsplit(x,split=' '))))
-colnames(h99.env) <- c('trt','plant','leaf','date')
-                                        #make date an date vector
-h99.env[,4] <- paste(substr(h99.env[,4],1,4),substr(h99.env[,4],5,6),substr(h99.env[,4],7,8),sep='-')
-h99.date <- as.Date(h99.env[,4])
-                                        #plot of species dynamics across sampling dates
-pdf('./results/h99_time.pdf')
-par(mfrow=c(3,3))
-for (i in 1:ncol(h99.com)){
-  plot(h99.com[,i]~h99.date,main=colnames(h99.com)[i])
-  lines(spline(h99.com[,i]~h99.date))
-}
-dev.off()
+\begin{verbatim}
 
-@ 
+Meta-data for Hawley and Molly
+###Summer Time Series Data from Aaron
+###NOTE! Not published data
+
+##Hawley and Molly bogs 1999 and 2000 time series
+##META
+##S. purpurea inquiline community
+##Two bogs, Hawley (NW MA) and Molly (NW VT)
+##Sampled weekly
+##Three treatments (a1=open, a2=plug 3 weeks and a3=plug 6 weeks)
+##Also 20 control plants, monitored as they became available for
+##colonization
+##a4=control
+##length(table(a4$plant)[table(a4$plant)!=0])
+##Blaesoxipha = Fletcherimyia fletcheri
+##Invertebrates in Freshwater Wetlands of North America: Ecology and
+##Management 
+##edited by Darold P. Batzer, Russell B. Rader, Scott A. Wissinger
+##page 414
+##Also, see
+##http://www.nku.edu/~dahlem/General%20Images/DahlemNacziPPlantSarcs.pdf
+##And, http://www.nku.edu/~dahlem/PPlant/ppzflies.htm
+
+##Structure of the food webs can be found in:
+##Baiser et al. 2011
+##Mouquet et al. 2008 (see citations inside too)
+##Gotelli and Ellison 2006
+
+##Model from Baiser et al. 2011
+\end{verbatim}
 
 \section{06 May 2014}
 

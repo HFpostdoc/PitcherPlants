@@ -41,6 +41,17 @@
 \item Initial analyses of the Hawley and Molly datasets
 \end{itemize}
 
+\section{15 May 2014}
+
+Looking at Early Warning Signals package.
+
+<<>>=
+library(earlywarnings)
+
+
+
+@ 
+
 
 \section{14 May 2014}
 
