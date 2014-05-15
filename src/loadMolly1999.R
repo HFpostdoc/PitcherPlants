@@ -1,7 +1,7 @@
 ###Function for loading the Molly Bog 1999 dataset
 ###MKLau 15may2014
 
-m99 <- read.csv('./data/Molly1999colonization.csv')
+m99 <- read.csv('../data/Molly1999colonization.csv')
 m99 <- m99[,-ncol(m99)]
 m99[is.na(m99)] <- 0
                                         #limit to open pitchers
@@ -30,4 +30,7 @@ m99.date <- as.Date(m99.env[,4])
 head(m99.env);tail(m99.env)
 m99.tpl <- paste(m99.env[,1],m99.env[,2],m99.env[,3]) #treatment plant leaf
 m99.tpl.date <- split(m99.env[,4],m99.tpl)
-h00.tpl.date <- lapply(m99.tpl.date,as.Date)
+m99.tpl.date <- lapply(m99.tpl.date,as.Date)
+                                        #
+head(m99.env)
+print('Finished!')

@@ -4,7 +4,7 @@
 ####Data are NOT published. Do not distribute
 ###(a1=open, a2=plug 3 weeks and a3=plug 6 weeks)
 
-h99 <- read.csv('./data/Hawley1999colonization.csv')
+h99 <- read.csv('../data/Hawley1999colonization.csv')
 h99 <- h99[,-ncol(h99)]
 h99[is.na(h99)] <- 0
                                         #limit to open pitchers
@@ -33,7 +33,7 @@ h99.date <- as.Date(h99.env[,4])
 head(h99.env);tail(h99.env)
 h99.tpl <- paste(h99.env[,1],h99.env[,2],h99.env[,3]) #treatment plant leaf
 h99.tpl.date <- split(h99.env[,4],h99.tpl)
-h00.tpl.date <- lapply(h99.tpl.date,as.Date)
+h99.tpl.date <- lapply(h99.tpl.date,as.Date)
                                         #
 head(h99.env)
 print('Finished!')
