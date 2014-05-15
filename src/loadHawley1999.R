@@ -29,5 +29,11 @@ colnames(h99.env) <- c('trt','plant','leaf','date')
                                         #make date an date vector
 h99.env[,4] <- paste(substr(h99.env[,4],1,4),substr(h99.env[,4],5,6),substr(h99.env[,4],7,8),sep='-')
 h99.date <- as.Date(h99.env[,4])
+                                        #temporal pattern for a single species
+head(h99.env);tail(h99.env)
+h99.tpl <- paste(h99.env[,1],h99.env[,2],h99.env[,3]) #treatment plant leaf
+h99.tpl.date <- split(h99.env[,4],h99.tpl)
+h00.tpl.date <- lapply(h99.tpl.date,as.Date)
+                                        #
 head(h99.env)
 print('Finished!')
