@@ -41,6 +41,19 @@
 \item Initial analyses of the Hawley and Molly datasets
 \end{itemize}
 
+\section{21 May 2014}
+
+\begin{enumerate}
+\item Run simulations (Hastings, Allesina, Baiser)
+\item Synthesize datasets across scales of time and space
+  \begin{itemize}
+  \item Pitcher inquilines
+  \item Pollen records
+  \item Food web reconstructions
+  \end{itemize}
+\end{enumerate}
+
+
 \section{15 May 2014}
 
 Using Early Warning Signals package for analyses. 
