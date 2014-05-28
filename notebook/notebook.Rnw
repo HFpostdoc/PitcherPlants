@@ -37,8 +37,9 @@
 \section{Lab Bench}
 
 \begin{itemize}
-\item Currently running a simulation to examine Connectence -> Asc.
-\item Initial analyses of the Hawley and Molly datasets
+\item generic_ews has issues fitting models to the Hawley and Molly
+  datasets
+\item 
 \end{itemize}
 
 \section{21 May 2014}
@@ -53,16 +54,12 @@
   \end{itemize}
 \end{enumerate}
 
-
-\section{15 May 2014}
-
-Using Early Warning Signals package for analyses. 
-
 Currently working on generating stats for the generic EWS.
 
 Go to ###mark
 
 <<>>=
+rm(list=ls())
 library(earlywarnings)
 source('../src/loadMolly1999.R')
 source('../src/loadHawley1999.R')
@@ -74,21 +71,81 @@ source('../src/loadHawley1999.R')
 ## "h99.tpl" = community data by treatment plant leaf vector
 ## "h99.tpl.date" = date sampled for each leaf
 
+###Plot over time for each pitcher for each species
+##molly
+i <- 9
+k <- 3
+
+for (i in 1:ncol(h99.tpl[[1]])){
+  pdf(paste('../results/',paste('hawley',colnames(h99.tpl[[1]])[i],'.pdf',sep='_'),sep=''),width=20,height=10)
+  par(mfrow=c(3,7))
+  for (k in 1:length(h99.tpl)){
+    plot(h99.tpl[[k]][,i]~h99.tpl.date[[k]],pch='',xlab='',ylab=colnames(h99.tpl[[k]])[i],main=names(h99.tpl)[k])
+    lines((h99.tpl[[k]][,i]~h99.tpl.date[[k]]))
+  }
+  dev.off()
+}
+
+
+for (i in 1:ncol(m99.tpl[[1]])){
+  pdf(paste('../results/',paste('molly',colnames(m99.tpl[[1]])[i],'.pdf',sep='_'),sep=''),width=20,height=10)
+  par(mfrow=c(4,5))
+  for (k in 1:length(m99.tpl)){
+    plot(m99.tpl[[k]][,i]~m99.tpl.date[[k]],pch='',xlab='',ylab=colnames(m99.tpl[[k]])[i],main=names(m99.tpl)[k])
+    lines((m99.tpl[[k]][,i]~m99.tpl.date[[k]]))
+  }
+  dev.off()
+}
+
+
+##hawley
+
 gews <- function(x,times){
   out <- generic_ews(timeseries=data.frame(times,x))
   out <- apply(out,2,function(x,y) cor(x,y),y=out[,1])
   return(out)
 }
-                                        #
-###mark
-i <- 9
-test <- lapply(h99.tpl,function(x,i,times) gews(x[,i],times), i=i, times=h99.tpl.date[[1]])
-times <- h99.tpl.date[[k]]
-series <- h99.tpl[[k]][,9]
-out <- gews(series,times)
 
+###Hawley
+out.i <- list()
+out.k <- list()
+for (k in 1:length(h99.tpl)){
+  for (i in 1:ncol(h99.tpl[[k]])){
+    out.i[[i]] <- gews(I(h99.tpl[[k]][,i] + runif(1,-0.0001,0.0001)),h99.tpl.date[[k]])
+  }
+  out.k[[k]] <- do.call(rbind,out.i)
+  rownames(out.k[[k]]) <- paste(names(h99.tpl)[k],colnames(h99.tpl[[k]]))
+}
+h.out <- out.k
+
+###Molly
+out.i <- list()
+out.k <- list()
+for (k in 1:length(m99.tpl)){
+  for (i in 1:ncol(m99.tpl[[k]])){
+    out.i[[i]] <- tryCatch(gews(m99.tpl[[k]][,i],m99.tpl.date[[k]]),error=function(e){
+      out <- rep(NA,9);
+      names(out) <-  c('timeindex','ar1','sd','sk','kurt','cv','returnrate','densratio','acf1');
+      return(out)
+    })
+  }
+  out.k[[k]] <- do.call(rbind,out.i)
+  rownames(out.k[[k]]) <- paste(names(m99.tpl)[k],colnames(m99.tpl[[k]]))
+}
+m.out <- out.k
+
+###
+m.out
+h.out
 
 @ 
+
+
+\section{15 May 2014}
+
+Using Early Warning Signals package for analyses. 
+
+Moved chunk up to 21 May 2014
 
 \section{14 May 2014}
 

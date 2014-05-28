@@ -33,6 +33,16 @@ m99.tpl.date <- split(m99.env[,4],m99.tpl)
 m99.tpl.date <- lapply(m99.tpl.date,as.Date)
 m99.tpl <- split(m99.com,m99.tpl)
 m99.tpl <- lapply(m99.tpl,function(x) matrix(x,ncol=ncol(m99.com)))
+
+                                        #temporal pattern for a single species
+head(m99.env);tail(m99.env)
+m99.tpl <- paste(m99.env[,1],m99.env[,2],m99.env[,3]) #treatment plant leaf
+m99.tpl.date <- split(m99.env[,4],m99.tpl)
+m99.tpl.date <- lapply(m99.tpl.date,as.Date)
+m99.tpl <- split(m99.com,m99.tpl)
+m99.tpl <- lapply(m99.tpl,function(x) matrix(x,ncol=ncol(m99.com)))
+for (i in 1:length(m99.tpl)){colnames(m99.tpl[[i]]) <- colnames(m99.com)}
+names(m99.tpl) <- names(m99.tpl.date)
                                         #
 print(all(m99.tpl[[1]] == m99.com[1:nrow(m99.tpl[[1]]),]))
 print('Finished!')

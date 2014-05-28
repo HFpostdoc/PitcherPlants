@@ -36,6 +36,8 @@ h99.tpl.date <- split(h99.env[,4],h99.tpl)
 h99.tpl.date <- lapply(h99.tpl.date,as.Date)
 h99.tpl <- split(h99.com,h99.tpl)
 h99.tpl <- lapply(h99.tpl,function(x) matrix(x,ncol=ncol(h99.com)))
+for (i in 1:length(h99.tpl)){colnames(h99.tpl[[i]]) <- colnames(h99.com)}
+names(h99.tpl) <- names(h99.tpl.date)
                                         #
 print(all(h99.tpl[[1]] == h99.com[1:nrow(h99.tpl[[1]]),]))
 print('Finished!')
