@@ -42,6 +42,70 @@
 \item 
 \end{itemize}
 
+\section{24 June 2014}
+
+Entering the inquiline food web models.
+<<>>=
+
+
+@ 
+
+Programming the O2 simulator modified by Baiser.
+
+<<>>=
+###photosynthesis
+                                        #a=maximum O2 infused from plant at midday
+                                        #apmin & apmax = min and max augmentation
+                                        #s=steepness of mineralization augmentation
+                                        #n=nutrients mineralized by decomp
+                                        #Aqe=quantum yield = O2 per photon
+                                        #Amax=maximum photosynthetic rate
+                                        #LCP=light compensation point (x-intercept, A=0)
+                                        #PAR=photosynthetically active radiation
+psm <- function(t=0,a=20,f=1/1440,c=100,Aqe=0.3,Amax=4,apmax=2,apmin=0,LCP=20,s=10,n=75,d=0.5){
+  PAR <- c*sin(2*pi*f*t)
+  if (PAR>=20){A <- a*Amax*(1-exp(-Aqe*(PAR-LCP)))}else{A <- 0}
+  return(A)
+}
+
+###Decomp
+dcm <- function(t=0,a=20,w=0.075,m=1,Kw=0.1){
+  O2.lost <- m + a*(w/(Kw+w))
+  return(O2.lost)
+}
+
+###Nutrient diffusion model
+x <- 0 #Oxygen concentration = [O_2]
+t <- 0:1440 #time
+a <- 20 #oxygenation augmentation
+c <- 100 #constant
+w <- 0.075 #prey remaining
+n <- (w[1]*x[1])/c #nurient diffusion
+s <- 10
+d <- 0.5
+apmax <- 2
+apmin <- 0
+a. <- 20 #
+b. <- 4 #
+a[2] <- a[1] * (((apmax-apmin)/(1+exp(-s*n-d)))+apmin)
+
+for (i in 2:length(t)){
+  a[i] <- a[i-1] * (((apmax-apmin)/(1+exp(-s*n[i]-d)))+apmin)
+  ##
+  x[i] <- psm(t=t[i],a=a[i],n=n[i]) - dcm(t=t[i],a[i],w[i-1])
+  ##
+  n[i] <- w[i]*x[i]
+  w[i+1] <- a.*exp(-b.*w[i]*t[i])
+  n[i] <- (w[1]*x[1])/c #nurient diffusion
+  #psm (t=0,a=20,f=1/1440,c=100,Aqe=0.3,Amax=4,apmax=2,apmin=0,LCP=20,s=10,n=75,d=0.5){
+  #dcm (t=0,a=20,a.=20,b.=4,w=0.075,m=1,Kw=0.1)
+}
+
+
+@ 
+
+
+
 \section{21 May 2014}
 
 \begin{enumerate}
