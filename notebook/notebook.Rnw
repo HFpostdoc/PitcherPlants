@@ -42,6 +42,18 @@
 \item 
 \end{itemize}
 
+\section{2 Jul 2014}
+
+Entering the inquiline food web model from mouquet.
+<<>>=
+###Model and data from Mouquet et al. 2008
+library(enaR)
+table1 <- t(read.csv('../data/mouq_inq_values.txt'))
+table1
+
+@ 
+
+
 \section{24 June 2014}
 
 Entering the inquiline food web models.
