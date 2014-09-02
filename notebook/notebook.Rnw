@@ -39,8 +39,31 @@
 \begin{itemize}
 \item generic_ews has issues fitting models to the Hawley and Molly
   datasets
-\item 
 \end{itemize}
+
+\section{2 Sep 2014}
+Meta-data from amanda:
+
+\begin{verbatim}
+I have moved two files to the UVM 2014 dropbox folder within the
+Tipping Point MS folder.  They should be ``control_nrd_abspres.csv''
+and ``control_nrd_peptide_trans.csv''.  The first file is an
+absence/presence matrix with proteins present in our control
+(unenriched) treatments that map to KEGG pathways.  Columns are the
+pathyways and entries are 1s and 0s.  The other file is a list of all
+the proteins that were present in the control treatments and the total
+number of peptides that mapped to them, as well as the unique number
+of peptides.  I have files like this for both our custom database
+search (translated metagenomic data) and our search using a pre-set
+database (has the code ``nrd'' in the file name). 
+\end{verbatim}
+
+Take a look at the "toy" example (src/KEGGgraph...).
+
+<<>>=
+
+
+@ 
 
 \section{2 Jul 2014}
 
