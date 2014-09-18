@@ -1,0 +1,2394 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{babel}
+\usepackage{lineno}
+\usepackage{amsmath}
+
+\linenumbers
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-15
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing double
+\use_hyperref false
+\papersize letterpaper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.54cm
+\topmargin 2.54cm
+\rightmargin 2.54cm
+\bottommargin 2.54cm
+\secnumdepth -2
+\tocdepth -2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Regime shifts and alternative states in the 
+\emph on
+Sarracenia
+\emph default
+ microecosystem
+\end_layout
+
+\begin_layout Author
+Aaron M.
+ Ellison,
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+1,*
+\end_layout
+
+\end_inset
+
+ Benjamin Baiser,
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+1,2
+\end_layout
+
+\end_inset
+
+ Matthew K.
+ Lau,
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ and Nicholas J.
+ Gotelli
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+Harvard Forest, Harvard University, 324 North Main Street, Petersham, Massachuse
+tts 01366; 
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+Department of Wildlife Ecology and Conservation, University of Florida,
+ Gainesville, Florida 32611; 
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+Department of Biology, University of Vermont, Burlington, Vermont 05405
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Keywords
+\emph default
+: alternative states, model system, organic-matter loading, regime shifts,
+ 
+\emph on
+Sarracenia purpurea
+\end_layout
+
+\begin_layout Standard
+Article type: 
+\series bold
+Article
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Abstract
+\end_layout
+
+\begin_layout Standard
+text - 200 words, 1 paragraph, Using sensitivity analyses we identify model
+ parameters that most strongly control the dynamics of the pitcher plant
+ ecosystem and show that the system can eventually overcome its hysteresis
+ and return to an oligotrophic state once organic-matter input is stopped.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Introduction
+\end_layout
+
+\begin_layout Standard
+Regime shifts in ecological systems are defined as rapid changes in the
+ spatial or temporal dynamics of a more-or-less stable system caused by
+ slow, directional changes in one or more underlying state variables 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Scheffer2001,Scheffer2009"
+
+\end_inset
+
+.
+ Ecological systems in which the occurrence of regime shifts is unambiguous
+ are uncommon, primarily because long time series of observations are required
+ to identify both stability of each state and a breakpoint between them
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bestelmeyer2011"
+
+\end_inset
+
+.
+ Detailed modeling and decades of observations and experiments have led
+ to a thorough understanding of a canonical example of an ecological regime
+ shift: the rapid shift from oligotrophic to eutrophic states in lakes 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Carpenter2006a,Carpenter2011"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Oxygen dynamics in lakes can be described using a simple model that yields
+ both alternative states and hysteresis in the shift between them 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Scheffer2001"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dx}{dt}=a-bx+rf(x)\label{eq:0:MinimalModel}
+\end{equation}
+
+\end_inset
+
+In this model, the observed variable 
+\emph on
+x
+\emph default
+ (e.g., nutrient concentration in a lake) is positively correlated with state
+ variable 
+\emph on
+a
+\emph default
+ (e.g., rate of nutrient loading) and negatively correlated with state variable
+ 
+\emph on
+b
+\emph default
+ (e.g., rate of nutrient removal).
+ A positive feedback loop, 
+\emph on
+rf
+\emph default
+(
+\emph on
+x
+\emph default
+) (in the lake model, this is the rate of nutrient recycling between the
+ lake sediments and water column).
+ If 
+\emph on
+r 
+\emph default
+> 0 and 
+\begin_inset Formula $\{rf\prime(x)\}>b$
+\end_inset
+
+, there will be more than one equilibrium point (i.e., stable state); the
+ function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ determines the shape of the switch between the states and the degree of
+ hysteresis 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Scheffer2001"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Models of lake ecosystems and their food webs, and associated empirical
+ data also have revealed that returning lakes to the more 
+\begin_inset Quotes eld
+\end_inset
+
+desired
+\begin_inset Quotes erd
+\end_inset
+
+ oligotrophic state can be very slow—on the order of decades to centuries—(ref:
+ Contamin and Ellison; others from Carpenter group) and depends not only
+ on slowing or reversing the directional changes in underlying state variables
+ but also on the internal feedback dynamics of the system (i.e., the dynamics
+ of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:0:MinimalModel"
+
+\end_inset
+
+).
+ Other systems, including fisheries (ref: Carpenter PNAS) and ...
+ (ref; XXX et al.
+ PLoS One) have provided some support for these model results (ref: XXX
+ et al.
+ PLoS One), both in terms of dynamics and duration.
+\end_layout
+
+\begin_layout Standard
+In the last several years, many researchers have suggested that a wide range
+ of ecological systems are poised to 
+\begin_inset Quotes eld
+\end_inset
+
+tip
+\begin_inset Quotes erd
+\end_inset
+
+ into new regimes (refs...), or even that we are approaching a planetary tipping
+ point.
+ (ref: XXX, but see YYY).
+ If, as in lakes, either changes in the underlying state variables causing
+ these regime shifts or the regime shifts themselves span decades, ecological
+ insights into their causes and consequences will accrue relatively slowly.
+ More rapid progress both in understanding the mechanisms driving ecological
+ regime shifts and in determining how to reverse them requires well-understood
+ model systems that can be experimentally manipulated over much shorter
+ time scales.
+\end_layout
+
+\begin_layout Standard
+Recently, we have shown experimentally that organic-matter loading (i.e.,
+ prey addition) can cause a shift from oligotrophic to eutrophic conditions
+ in naturally-occurring microecosystems: the water and bacteria-filled modified
+ leaves of the northern (or purple) pitcher plant, 
+\emph on
+Sarracenia purpurea
+\emph default
+ (ref: Sirota).
+ Because bacteria that reproduce rapidly drive the nutrient cycling dynamics
+ of the 
+\emph on
+Sarracenia
+\emph default
+ microecosystem (ref: Butler et al.
+ 2008), the system states change in days rather than years or decades.
+ In addition to introducing a new experimental system for regime shifts
+ and alternative states, Sirota et al.
+ (2013) sketched a model that, in extreme cases, could lead to a rapid (regime)
+ shift from oligotrophic to eutrophic conditions in pitcher-plant leaves.
+ Here, we develop fully the model of the 
+\emph on
+Sarracenia
+\emph default
+ microecosystem, introduce more realism into the underlying environmental
+ drivers of the model, use sensitivity analysis to identify the parameters
+ that most strongly control the dynamics of the system, and show that the
+ system eventually can overcome its hysteresis and return to an oligotrophic
+ state once organic-matter input is stopped.
+ 
+\end_layout
+
+\begin_layout Part*
+The 
+\emph on
+Sarracenia
+\emph default
+ microecosystem
+\end_layout
+
+\begin_layout Standard
+Sketch of the biology of the system
+\end_layout
+
+\begin_layout Part*
+The Model
+\end_layout
+
+\begin_layout Standard
+The detritus-based pitcher-plant food web forms in the small pools of water
+ that accumulate in living and photosynthesizing modified leaves (
+\begin_inset Quotes eld
+\end_inset
+
+pitchers
+\begin_inset Quotes erd
+\end_inset
+
+) of 
+\emph on
+Sarracenia purpurea
+\emph default
+.
+ Thus, our model of this food web includes feedbacks between the food web
+ and the plant itself 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bradshaw1984"
+
+\end_inset
+
+.
+ The full model is a pair of coupled differential equations:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+x_{t+1}=\underbrace{a_{t}A_{t}}_{\mathrm{Photosynthesis}}-\underbrace{\left\{ m+a_{t}\left[\frac{w_{t-1}}{K_{w}+w_{t-1}}\right]\right\} }_{f(w,x,t)}+\underbrace{D_{t}(x_{t})}_{g(x,t)}\label{eq:1a:FullModel}\\
+a_{t+1}=a_{t}\times\left\{ \frac{a{}_{max}^{\prime}-a{}_{min}^{\prime}}{1+\exp(-s\cdot n_{t}-d)}+a{}_{min}^{\prime}\right\} \label{eq:1b:FullModelIterate}
+\end{align}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+In this model, the pitcher-plant fluid is oxygenated by photosynthesis (
+\emph on
+A
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+t
+\end_layout
+
+\end_inset
+
+
+\emph default
+), with 
+\emph on
+A
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+max
+\end_layout
+
+\end_inset
+
+
+\emph default
+ augmented by prey mineralization (
+\emph on
+a
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+t
+\end_layout
+
+\end_inset
+
+
+\emph default
+), as well as some diffusion from the atmosphere (
+\emph on
+g
+\emph default
+(
+\emph on
+x,t
+\emph default
+)).
+ Oxygen is lost from the fluid as prey is decomposed by the food web (
+\emph on
+f
+\emph default
+(
+\emph on
+w,x,t
+\emph default
+)).
+ A full list of model parameters is given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:ModelTerms"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align left
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:ModelTerms"
+
+\end_inset
+
+Terms, units, and interpretation for the model of oxygen dynamics in pitcher-pla
+nt fluid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="3">
+<features rotate="0" tabularvalignment="middle" tabularwidth="75page%">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="50text%">
+<row topspace="default" interlinespace="default">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Term
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Units
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interpretation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg/L
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum amount of oxygen infused from the plant to the fluid at mid-day
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{min}^{\prime},\, a_{max}^{\prime}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg/L
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+minimum or maximum possible augmentation of photosynthesis as a result of
+ nutrient fertilization from organic-matter mineralization by the food web
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inflection point of the sigmoidal curve relating nutrient mineralization
+ to photosynthetic augmentation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg/L
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diffusion rate of oxygen from atmosphere into the pitcher fluid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/
+\emph on
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+constant adjusting sine wave of diurnal PAR for frequency of measurements
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $K_{w}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg/min
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+half-saturation constant for prey consumption
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg/L
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amount of oxygen used for basal metabolism (respiration) of bacteria
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg/L
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+quantity of nutrients mineralized by decomposition; a function of 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dimensionless
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+steppenss of the sigmoidal curve relating nutrient mineralization to photosynthe
+tic augmentation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+minutes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+time (frequency of model iteration)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mass of prey remaining at time 
+\emph on
+t
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mg/L
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+]: concentration of oxygen in the pitcher fluid 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Photosynthesis
+\end_layout
+
+\begin_layout Standard
+In the absence of the foodweb, baseline oxygen concentration [O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+] in the pitcher water, is determined by diurnal photosynthesis: pitchers
+ take up CO
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+ from the air or water and release O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+ back into it 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Cameron1977,Bradshaw1984,Sirota2013"
+
+\end_inset
+
+.
+ Photosynthesis is first modeled as 
+\begin_inset Formula $A=A_{max}[1-\exp(-A_{qe}[\mathrm{PAR-LCP}])]$
+\end_inset
+
+ (after 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "Peek2002"
+
+\end_inset
+
+), where PAR is photosynthetically active radiation, which normally ranges
+ from 0 - 2500 
+\begin_inset Formula $\mu\mathrm{mol\,\cdot\, m^{-2}\,\cdot\, s^{-1}}$
+\end_inset
+
+ and which is modeled as a truncated dirunal sine-wave (PAR = 0 at night,
+ a sine-wave during the day: 
+\series bold
+\color magenta
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PAR and A"
+
+\end_inset
+
+
+\series default
+\color inherit
+); 
+\emph on
+A
+\emph default
+ is photosynthetic rate (in 
+\begin_inset Formula $\mu\mathrm{mol\: CO_{2}\,\cdot\, m^{-2}\,\cdot\, s^{-1}}$
+\end_inset
+
+); 
+\emph on
+A
+\emph default
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+max
+\end_layout
+
+\end_inset
+
+ is the maximum photosynthetic rate of an pitcher plant that has not captured
+ or processed any prey (
+\begin_inset Formula $\bar{x}\approx4\,\mu\mathrm{mol\: CO_{2}\,\cdot\, m^{-2}\cdot\, s^{-1}}$
+\end_inset
+
+; 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "Small1972,Farnsworth2008"
+
+\end_inset
+
+); 
+\emph on
+A
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+qe
+\end_layout
+
+\end_inset
+
+
+\emph default
+ is the quantum yield (
+\begin_inset Formula $\approx0.3$
+\end_inset
+
+: the initial slope, at low light, of the 
+\emph on
+A
+\emph default
+ vs.
+ PAR curve); and LCP is the light compensation point: the x-intercept when
+ A = 0, 
+\begin_inset Formula $\approx20\,\mathrm{mol\,\cdot\, m^{-2}\,\cdot\, s^{-1}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Since we are interested in oxygen dynamics in volumes of water, we convert
+ A from 
+\begin_inset Formula $\mu\mathrm{mol\: CO_{2}\,\cdot\, m^{-2}\cdot\, s^{-1}}$
+\end_inset
+
+ to mg O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+ / L by noting that there is a 1:1 relationship between 
+\begin_inset Formula $\mu$
+\end_inset
+
+mol CO
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+mol O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+ in phothosynthesis; that 1 
+\begin_inset Formula $\mu$
+\end_inset
+
+mol O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+= 32 
+\begin_inset Formula $\mu\mathrm{g\, O_{2}\,\cdot\, m^{-2}\,\cdot\, s^{-1}}$
+\end_inset
+
+; and that the specific leaf area of 
+\emph on
+S.
+ purpurea 
+\emph default
+
+\begin_inset Formula $\approx$
+\end_inset
+
+ 70 cm
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+/g 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Farnsworth2008"
+
+\end_inset
+
+.
+ Thus, O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+ production 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 0.21 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mu\mathrm{g\, O_{2}\,\cdot\, g\: leaf^{-1}\,\cdot\, s^{-1}}$
+\end_inset
+
+.
+ The average 5-ml leaf has a surface area of 40 cm
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2
+\end_layout
+
+\end_inset
+
+ and weighs 0.5 g, and a 1-L leaf would weigh 10g.
+ Thus, O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2
+\end_layout
+
+\end_inset
+
+ production from photosynthesis 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 2.1 
+\begin_inset Formula $\mathrm{mg\, O_{2}\,\cdot\, L^{-1}\,\cdot\, s^{-1}}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+It follows that our functions of PAR and 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+A
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, taking into account LCP, are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathrm{PAR}=c\sin(2\pi ft)\label{eq:PAR as sinewave}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+A=\begin{cases}
+a\,\cdot\, A_{max}[1-\exp(-0.3[\mathrm{PAR}-20])] & :\mathrm{PAR}\geq20\\
+0 & :\mathrm{PAR}<20
+\end{cases}\label{eq:O2 conditional}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:PAR as sinewave"
+
+\end_inset
+
+, the amplitude 
+\emph on
+c
+\emph default
+ is maximum PAR at mid-day; the constant 
+\emph on
+f
+\emph default
+ adusts for the frequency of measurements.
+ Since our model updates every minute, 
+\emph on
+f
+\emph default
+ = 1/1440 (the reciprocal of the number of minutes per day).
+ Without loss of generality, our model runs start at sunrise (
+\emph on
+t
+\emph default
+ = 1), day-length = 12 hours = 720 minutes, and PAR(t) is trunctated = 0
+ for 
+\begin_inset Formula $t\in\{721,\,1440\}$
+\end_inset
+
+.
+ In Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:O2 conditional"
+
+\end_inset
+
+, 
+\emph on
+a
+\emph default
+ is the amount that photosynthetic rate can be increased as a result of
+ nutrients provided to the plant as prey is mineralized by the food web
+ (
+\series bold
+\color magenta
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PAR and A"
+
+\end_inset
+
+
+\series default
+\color inherit
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PAR and A"
+
+\end_inset
+
+Four-part figure.
+ (a) truncated sine wave of PAR; (b) observed PAR; (c) A as a function of
+ PAR w/o food web; (d) A as a function of PAR with mineralization augmentation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Respiration
+\end_layout
+
+\begin_layout Standard
+Biological oxygen demand (
+\shape smallcaps
+bod
+\shape default
+) of bacteria as they decompose prey rapidly depletes [O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+] in the pitcher fluid.
+ Although different [O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+] may favor different numbers of either aerobic or anaerobic bacteria in
+ the pitcher fluid, the efficiency of organic-matter decomposition by either
+ type of bacteria is roughly equal 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Murphy1984"
+
+\end_inset
+
+, so we assume sufficient numbers of bacteria to decompose prey at a fixed,
+ negative exponential rate:
+\begin_inset Formula 
+\begin{equation}
+w(t)=ae^{-b[w_{0}t]}\label{eq:decomp-negative exponential}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Biologically, we take this to mean that easily digested parts of insect
+ prey, such as fat bodies, are processed quickly, whereas the more recalcitrant
+ proteins and chitins break down more slowly 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baiser2011"
+
+\end_inset
+
+.
+ Field observations have shown that the soft parts of a single 
+\begin_inset Formula $75-\mu g$
+\end_inset
+
+ wasp can be comsumed completely over a 48-hour period in a pitcher with
+ 5 ml of fluid.
+ Thus, the baseline parameters for Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:decomp-negative exponential"
+
+\end_inset
+
+ were set at 
+\emph on
+a 
+\emph default
+= 20 mg and 
+\begin_inset Formula $b\,=\,4\,\mathrm{mg\,\cdot\, mg^{-1}\,\cdot\, d^{-1}}$
+\end_inset
+
+
+\emph on
+.
+ 
+\emph default
+Because we fix the decomposition rate of given mass of prey, to maintain
+ a 48-hour decomposition time of a single 
+\begin_inset Formula $75-\mu g$
+\end_inset
+
+ wasp while varying 
+\emph on
+a
+\emph default
+ and 
+\emph on
+b
+\emph default
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:decomp-negative exponential"
+
+\end_inset
+
+, it is necessary to fix 
+\begin_inset Formula $\frac{a}{b}=5$
+\end_inset
+
+.
+ Finally, because 
+\emph on
+S.
+ purpurea
+\emph default
+ produces digestive enzymes such as proteases and chitinases only for a
+ short period of time early in leaf growth 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Gallie1997"
+
+\end_inset
+
+, we ignore their effects here.
+\end_layout
+
+\begin_layout Standard
+Oxygen used up by the bacteria in prey consumption (= 1 - 
+\shape smallcaps
+bod
+\shape default
+) was modeled as a saturating function of the remaining prey.
+ The proportion of the prey remaining = 1 – the amount of prey decomposed,
+ which is a function of the maximum amount of oxygen at mid-day (
+\emph on
+a
+\emph default
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1a:FullModel"
+
+\end_inset
+
+, iteratively augmented by 
+\begin_inset Formula $a^{\prime}$
+\end_inset
+
+from Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1b:FullModelIterate"
+
+\end_inset
+
+ and as detailed below in Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:prey-mineralization"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:a-prime-augmentation"
+
+\end_inset
+
+); the mass of prey (
+\emph on
+w
+\emph default
+); a half-saturation constant defining the prey-consumption curve (
+\begin_inset Formula $K_{w}$
+\end_inset
+
+) that determines how much prey is left over each 
+\begin_inset Quotes eld
+\end_inset
+
+day
+\begin_inset Quotes erd
+\end_inset
+
+ of the iterated model; and the amount of oxygen needed by the bacteria
+ for basal metabolism.
+ Hence:
+\begin_inset Formula 
+\begin{equation}
+\mathrm{O}_{2}\;\mathrm{lost}(t)=f(w,x,t)=m+a\left[\frac{w(t-1)}{K_{w}+w(t-1)}\right]\label{eq:O2lost-decomp}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the sensitivity analysis, 
+\emph on
+m
+\emph default
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:O2lost-decomp"
+
+\end_inset
+
+ was fixed = 1, whereas 
+\emph on
+K
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+w
+\end_layout
+
+\end_inset
+
+
+\emph default
+ varied.
+\end_layout
+
+\begin_layout Section*
+Diffusion and oxygenation
+\end_layout
+
+\begin_layout Standard
+[O
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+] increases in the pitcher fluid in three ways.
+ Some oxygen diffiuses from the atmosphere into the pitcher fluid, but because
+ this happens only at the surface of the pitcher fluid, and the 
+\begin_inset Quotes eld
+\end_inset
+
+mouth
+\begin_inset Quotes erd
+\end_inset
+
+ of the pitcher is at least an order of magnitude smaller than the surface
+ area of the pitcher itself 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ellison2002b"
+
+\end_inset
+
+; we ignore this term and focus on re-oxygenation through baseline oxgyen
+ production and prey-augmented photosynthesis (Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:O2 conditional"
+
+\end_inset
+
+).
+ The latter results from a positive feedback loop in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1b:FullModelIterate"
+
+\end_inset
+
+ that links prey mineralization to the uptake of mineralized nutrients by
+ the plant, and the subsequent usage of these nutrients to increase photosynthet
+ic rate of the pitcher 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Farnsworth2008"
+
+\end_inset
+
+.
+ Ants and wasps, the most common insect prey of pitcher plants 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ellison2009"
+
+\end_inset
+
+, are 
+\begin_inset Formula $\approx$
+\end_inset
+
+50% C, have a C:N ratio of 6:1, and N:P:K ratios of 
+\begin_inset Formula $\approx$
+\end_inset
+
+12:1.5:0.9 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Sirota2013"
+
+\end_inset
+
+.
+ As the prey are mineralized, the nutrients that are released, especially
+ NH
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bradshaw1984"
+
+\end_inset
+
+ and P (as 
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+
+P: 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "Plummer1964"
+
+\end_inset
+
+), are absorbed rapidly by the pitcher.
+ Photosynthesis by 
+\emph on
+Sarracenia
+\emph default
+ is limited by both N and P (and stoichometrically by N: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ellison2006a,Wakefield2005"
+
+\end_inset
+
+), and photosynthetic rates of pitcher plants significantly increase following
+ N additions 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ellison2002b"
+
+\end_inset
+
+.
+ We model these two processes – nutrient release and augmentation of photosynthe
+sis – with a pair of equations.
+\end_layout
+
+\begin_layout Standard
+First, nutrient release following bacterial mineralzation is a function
+ of prey mass (
+\emph on
+w
+\emph default
+) and available oxygen (
+\emph on
+x
+\emph default
+) used by bacteria to break down and mineralize the prey:
+\begin_inset Formula 
+\begin{equation}
+n(t)=\frac{w(t)x(t)}{c}\label{eq:prey-mineralization}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\emph on
+c
+\emph default
+ is a scaling constant (we set 
+\emph on
+c
+\emph default
+ = 100).
+\end_layout
+
+\begin_layout Standard
+Nutrients absorbed by pitchers and not stored for future use 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Butler2007"
+
+\end_inset
+
+ could be used to make additional enzymes for photosynthesis 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Givnish1984"
+
+\end_inset
+
+, and we model uptake as a signmoidal (saturating) relationship betwen additiona
+l nutrients absorbed and augmentation of the peak rate of photosynthesis
+ (
+\emph on
+a
+\emph default
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1a:FullModel"
+
+\end_inset
+
+): 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+a^{\prime}=\frac{a_{max}^{\prime}-a_{min}^{\prime}}{1+exp(-[sn(t)-d])}+a_{min}^{\prime}\label{eq:a-prime-augmentation}\\
+a(t+1)=a(t)\,\times\, a^{\prime}(t)\label{eq:a(t+1)-update}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:a-prime-augmentation"
+
+\end_inset
+
+, 
+\begin_inset Formula $a_{min}^{\prime}$
+\end_inset
+
+ is the minimum possible augmentation of photosynthesis, which we set =
+ 0; 
+\begin_inset Formula $a_{max}^{\prime}$
+\end_inset
+
+is the maximum possible augmentation, which we set = 2; 
+\emph on
+s
+\emph default
+ is the steepness of the increase (set = 10); and 
+\emph on
+d
+\emph default
+ is the inflection point of the curve (= 0.5).
+ Augmentation evolves as the day's leftover prey (i.e., that not completely
+ broken down in a given day) accumulates (within the 
+\emph on
+n
+\emph default
+(
+\emph on
+t
+\emph default
+) term), and is mineralized on subsequent days.
+ We note that modeling this as discrete day-to-day carry-over is an artefact
+ of iterations in computer models.
+ In real pitchers, decomposition is more continuous.
+ Similarly, the model updates the value of 
+\begin_inset Formula $a\prime$
+\end_inset
+
+ once each 
+\begin_inset Quotes eld
+\end_inset
+
+day
+\begin_inset Quotes erd
+\end_inset
+
+ using Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:a(t+1)-update"
+
+\end_inset
+
+ because conversion of nutrients to new photosynthetic enzymes is assumed
+ to occur slowly relatively to bacterial decomposition itself.
+\end_layout
+
+\begin_layout Section*
+Sensitivity analysis
+\end_layout
+
+\begin_layout Standard
+Five paramters were varied over a wide range of values to explore the sensitivit
+y of the model to prey input (mass added each day); the decomposition rate
+ (
+\emph on
+a
+\emph default
+ and 
+\emph on
+b
+\emph default
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:decomp-negative exponential"
+
+\end_inset
+
+), the half-saturation constant for prey consumption (
+\begin_inset Formula $K_{w}$
+\end_inset
+
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:O2lost-decomp"
+
+\end_inset
+
+) and the inflection point 
+\emph on
+d
+\emph default
+ for augmentation of photosynthesis in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:a-prime-augmentation"
+
+\end_inset
+
+.
+ The range of values for each of these parameters is given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sensitivity analysis parameter ranges"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Sensitivity analysis parameter ranges"
+
+\end_inset
+
+Values of parameters used in the sensitivity analyses.
+ Note that the values of 
+\emph on
+a
+\emph default
+ and 
+\emph on
+b
+\emph default
+ must change in concert to maintain a constant ratio of 5 so that prey decomposi
+tion is complete within 48 hours
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+values
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prey added (
+\begin_inset Formula $w_{0})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0, 1, 5 mg/day
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5, 10, 20, 40 mg
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1, 2, 4, 8 
+\begin_inset Formula $\mathrm{mg\,\cdot\, mg^{-1}\,\cdot\, d^{-1}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $K_{w}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.001, 0.01, 0.1 mg/min
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1, -2, -3, -4, -5 mg
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Models were run for each of the possible combinations of 
+\begin_inset Formula $\{w_{0},\, a,\, b\, K_{w}\, d\}$
+\end_inset
+
+—note that the joint set of 
+\emph on
+a
+\emph default
+ and 
+\emph on
+b
+\emph default
+ includes only 4 combinations: {(5,1), (10,2), (20,4), (40,8)}—for a total
+ of 180 model runs.
+\end_layout
+
+\begin_layout Part
+Results
+\end_layout
+
+\begin_layout Section*
+Model dynamics
+\end_layout
+
+\begin_layout Standard
+Illustrative examples (?spark charts or some subset of them) illustrating
+ the range of possible outcomes - controls, intermediate dynamics, collapse,
+ recovery.
+\end_layout
+
+\begin_layout Standard
+This should include time-series plots as well as phase-space plots.
+ Examples in Sirota et al.
+ PNAS supplement, but I think we can do better/differently here.
+\end_layout
+
+\begin_layout Section*
+Sensitivity analysis
+\end_layout
+
+\begin_layout Standard
+Which parameters drive the dynamics? Multivariate plots, additional analyses,
+ ...
+\end_layout
+
+\begin_layout Part*
+Discussion
+\end_layout
+
+\begin_layout Standard
+1.
+ Why we need model systems for regime shifts and alternative states
+\end_layout
+
+\begin_layout Standard
+2.
+ Similarities and differences between pitcher plants, lakes, and other ecologica
+l systems in which regime shifts have been identified and explored
+\end_layout
+
+\begin_layout Standard
+3.
+ Insights from pitcher plant system and model that could be applied to other
+ systems
+\end_layout
+
+\begin_layout Section*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Literature Cited
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "C:/Users/aellison.FAS_DOMAIN/Dropbox/BigDataBook/BigDataLaTeX/bibtex/bib/misc/ecology"
+options "C:/Users/aellison.FAS_DOMAIN/Dropbox/LyX/bibtext/bst/amnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
