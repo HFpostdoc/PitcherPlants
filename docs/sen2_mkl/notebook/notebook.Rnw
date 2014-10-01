@@ -40,76 +40,55 @@
 
 <<>>=
 
-####Photosynthesis
-PAR <- function(t,f=1/1440,c=100){
- out <- c*sin(2*pi*f*t)
- out[t > 720 & t <= 1440] <- 0
- return(out)
-}
-
-f.photo <- function(t,a=2,Amax=4,Aqe=0.3,LCP=20){
-  out <- a * (Amax * (1 - exp(-Aqe * (PAR(t) - LCP))))
-  out[PAR(t) < 20] <- 0
+###Oxygenation = Photosynethesis + Diffusion
+###Photosynthesis
+PAR <- function(t,c=100,f=1/1440){
+  out <- c*sin(2*pi*f*t)
+  out[t>720] <- 0
   return(out)
 }
 
-day <- (seq(0,24,by=0.01)*60)
-t <- day
+f.A <- function(t,Amax=4,Aqe=0.3,LCP=20,c=100){
+  out <- Amax * (1 - exp(-0.3 * (PAR(t,c=c) - LCP)))
+  out[PAR(t,c=c) < LCP] <- 0
+  return(out)
+}
+
+t <- seq(1,1440,by=1)
 par(mfrow=c(2,2))
 plot(PAR(t)~t,type='l')
-plot(f.photo(t)~PAR(t),type='l')
-plot(f.photo(t)~t,type='l')
-t <- seq(0,(24*10),by=0.01) * 60
-plot(f.photo(t)~t,type='l')
+plot(f.A(t)~t,type='l')
+plot(f.A(t)~PAR(t),type='l')
+a <- 0.001
+plot(a*f.A(t)~PAR(t),type='l',ylim=c(0,15))
+for (a in seq(0.001,3.7,by=0.1)){
+  if (a == 1.001){lines(I(a*A(t))~PAR(t),col='red')}else{lines(I(a*A(t))~PAR(t))}
+}
 
 ###Diffusion
 
-
 ###Respiration
-f.w <- function(t,ab=c(20,4),wo=20,f=1/1440){
-  ##original
-  (ab[1] * exp(-ab[2] * (wo * t)))
+f.w <- function(t,ab=c(20,4),wo=75,f=1/1440){
+  wo * (ab[1] * exp(I(-ab[2] * (wo * t * f))) / ab[1])
 }
 
-f.w <- function(t,ab=c(20,4),wo=20,f=1/1440){
-  wo * (ab[1] * exp(-ab[2] * (wo * t * f))) / ab[1]
+f.resp <- function(w,Kw=0.1){
+  w/(Kw + w)
 }
 
-day <- (seq(0,24,by=0.01)*60)
-t <- day
-rgb <- 1
-par(mfrow=c(1,1))
-plot(f.w(t,ab=c(20,4),wo=0)~t,type='l',col=rainbow(11)[rgb],ylim=c(0,10),ylab='w(t)')
-for (wo in seq(1,10,length=10)){
-  rgb <- rgb + 1
-  lines(f.w(t,ab=c(20,4),wo=wo)~t,col=rainbow(11)[rgb])
-}
+plot(f.w(t))
 
-f.n <- function(wt,xt=6,c=100){
-  wt*xt/c
+###Simulation
+O2.sim <- function(t=seq(1,1440,by=1),x=c(0,0),a=c(0,10),w=f.w(c(0,t)),A=f.A(c(0,t)),m=1,amin=0,amax=2,d=0.5,s=10,c=100,n=0){
+  for (i in 2:length(t)){
+    x[i] <- x[(i-1)] - ((a[i] * A[i]) - (m + a[i] * f.resp(w[(i-1)])))
+    n[i] <- (w[i]*x[i]/c)
+    a[(i+1)] <- a[i] * ((amax - amin) / (1 + exp(-(s*n[i]-d))) + amin)
+  }
+  x[x<0] <- 0
+  return(x)
 }
-
-f.a <- function(at,nt,amin=0,amax=2,s=10,d=0.5){
-  at * ((amax - amin) / (1 + exp(-s * nt - d)) + amin)
-}
-
-f.resp <- function(at,wt,Kw=0.01,m=1){
-  m + at * (wt / (Kw + wt))
-}
-
-xt <- c(6,6)
-wt <- f.w(t)
-at <- 10
-photo <- f.photo(t[1],at[1])
-resp <- f.resp(at,wt[1])
-for (i in 2:length(t)){
-  at[i] <- f.a(t[i],f.n(wt[(i-1)],xt[(i-1)]))
-  photo[i] <- f.photo(t[i],at[i])
-  resp[i] <- f.resp(at[i],wt[(i-1)])
-  xt[i] <- photo[i] + resp[i]
-}
-pairs(data.frame(t,wt,at,photo,resp,xt))
-plot(resp)
+plot(rep(O2.sim(x=c(10,10)),10),type='l')
 
 @ 
 
