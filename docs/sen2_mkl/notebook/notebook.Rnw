@@ -19,7 +19,7 @@
 \hypersetup{linktocpage}
 \linespread{1.5}
 
-\title{}
+\title{Sensitivity Analysis: Pitcher Plant Oxygen Content Model}
 \author{M.K. Lau}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -36,7 +36,84 @@
 %on the second page
 
 
-%\section{}
+\section{30 Sep 2014}
+
+<<>>=
+
+####Photosynthesis
+PAR <- function(t,f=1/1440,c=100){
+ out <- c*sin(2*pi*f*t)
+ out[t > 720 & t <= 1440] <- 0
+ return(out)
+}
+
+f.photo <- function(t,a=2,Amax=4,Aqe=0.3,LCP=20){
+  out <- a * (Amax * (1 - exp(-Aqe * (PAR(t) - LCP))))
+  out[PAR(t) < 20] <- 0
+  return(out)
+}
+
+day <- (seq(0,24,by=0.01)*60)
+t <- day
+par(mfrow=c(2,2))
+plot(PAR(t)~t,type='l')
+plot(f.photo(t)~PAR(t),type='l')
+plot(f.photo(t)~t,type='l')
+t <- seq(0,(24*10),by=0.01) * 60
+plot(f.photo(t)~t,type='l')
+
+###Diffusion
+
+
+###Respiration
+f.w <- function(t,ab=c(20,4),wo=20,f=1/1440){
+  ##original
+  (ab[1] * exp(-ab[2] * (wo * t)))
+}
+
+f.w <- function(t,ab=c(20,4),wo=20,f=1/1440){
+  wo * (ab[1] * exp(-ab[2] * (wo * t * f))) / ab[1]
+}
+
+day <- (seq(0,24,by=0.01)*60)
+t <- day
+rgb <- 1
+par(mfrow=c(1,1))
+plot(f.w(t,ab=c(20,4),wo=0)~t,type='l',col=rainbow(11)[rgb],ylim=c(0,10),ylab='w(t)')
+for (wo in seq(1,10,length=10)){
+  rgb <- rgb + 1
+  lines(f.w(t,ab=c(20,4),wo=wo)~t,col=rainbow(11)[rgb])
+}
+
+f.n <- function(wt,xt=6,c=100){
+  wt*xt/c
+}
+
+f.a <- function(at,nt,amin=0,amax=2,s=10,d=0.5){
+  at * ((amax - amin) / (1 + exp(-s * nt - d)) + amin)
+}
+
+f.resp <- function(at,wt,Kw=0.01,m=1){
+  m + at * (wt / (Kw + wt))
+}
+
+xt <- c(6,6)
+wt <- f.w(t)
+at <- 10
+photo <- f.photo(t[1],at[1])
+resp <- f.resp(at,wt[1])
+for (i in 2:length(t)){
+  at[i] <- f.a(t[i],f.n(wt[(i-1)],xt[(i-1)]))
+  photo[i] <- f.photo(t[i],at[i])
+  resp[i] <- f.resp(at[i],wt[(i-1)])
+  xt[i] <- photo[i] + resp[i]
+}
+pairs(data.frame(t,wt,at,photo,resp,xt))
+plot(resp)
+
+@ 
+
+
 %\subsection{}
 
 %% %%Figure construction

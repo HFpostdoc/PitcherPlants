@@ -2338,6 +2338,11 @@ This should include time-series plots as well as phase-space plots.
  PNAS supplement, but I think we can do better/differently here.
 \end_layout
 
+\begin_layout Itemize
+Different state = change in O2 production where the non-transient maximum
+ values are different from control
+\end_layout
+
 \begin_layout Section*
 Sensitivity analysis
 \end_layout
@@ -2345,6 +2350,27 @@ Sensitivity analysis
 \begin_layout Standard
 Which parameters drive the dynamics? Multivariate plots, additional analyses,
  ...
+\end_layout
+
+\begin_layout Itemize
+Transient = returning to the maximum
+\end_layout
+
+\begin_layout Itemize
+Prey: increases crashes
+\end_layout
+
+\begin_layout Itemize
+D: transient when D = -1, stable or crashing otherwise
+\end_layout
+
+\begin_layout Itemize
+K: increases the buffering of the system, increases return rates, increases
+ the number of stable states
+\end_layout
+
+\begin_layout Itemize
+ab: alters transient return rates, alters stable point
 \end_layout
 
 \begin_layout Part*
