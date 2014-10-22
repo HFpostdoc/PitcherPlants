@@ -90,8 +90,8 @@ sapply(dir('~/projects/packages/ccm/R',full.names=TRUE),source)
 ###Removing do 36, no temp data
 r1 <- read.csv('/Users/Aeolus/Dropbox/Tipping Point MS/2014 UVM/summer2014_cleaned_data/run1_allreps.csv')[,c(-1,-41)]
 r1.n <- do.call(rbind,strsplit(colnames(r1),split='_'))
-r1.do <- r1[r1.n[,3]=='do',]
-r1.temp <- r1[r1.n[,3]=='temp',]
+r1.do <- r1[,r1.n[,3]=='do']
+r1.temp <- r1[,r1.n[,3]=='temp']
 r1n.do <- r1.n[r1.n[,3]=='do',]
 r1n.temp <- r1.n[r1.n[,3]=='temp',]
 all(r1n.do[,4]==r1n.temp[,4])
