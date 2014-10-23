@@ -43,10 +43,19 @@
 
 \section{23 Oct 2014}
 
-<<>>=
+\begin{itemize}
+\item Worked with Aaron on the O2 model
+\item Currently re-implementing in R (see src/decomp.R)
+\end{itemize}
 
-
-@ 
+Task List:
+\begin{enumerate}
+\item Finish implmenting model 
+\item Re-run model with push and press perturbations
+\item Re-write equations
+\item Add a path diagram and relate to ecosystem literature
+\item Re-run sensativity analysis
+\end{enumerate}
 
 \section{22 Oct 2014}
 
