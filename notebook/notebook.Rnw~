@@ -41,6 +41,111 @@
   datasets
 \end{itemize}
 
+\section{22 Oct 2014}
+
+Changepoint analysis package
+
+<<>>=
+library('changepoint')
+example('changepoint')
+###simulate from the logistic map
+###ramp r across boundary
+###no noise
+source('../../unstable_states/src/unstable_states.R')
+cb8.16 <- 2.57 #choatic boundary, 8-16 cycles
+ri <- (cb8.16)-(0.02/2)
+rf <- (cb8.16)+(0.02/2)
+set.seed(1)
+drmc8.16 <- disrupt.mc(sd=0,ri=ri,rf=rf,dump=TRUE,burn=10)
+set.seed(1)
+drmc16.8 <- disrupt.mc(sd=0,ri=rf,rf=ri,dump=TRUE,burn=10)
+par(mfrow=c(3,2))
+plot(drmc8.16$r,xlab='time',ylab='r')
+abline(h=cb8.16,col=2)
+plot(drmc16.8$r,xlab='time',ylab='r')
+abline(h=cb8.16,col=2)
+plot(drmc16.8$N,xlab='time',ylab='N')
+plot(drmc8.16$N,xlab='time',ylab='N')
+plot(drmc16.8$N~drmc16.8$r,xlab='r',ylab='N',type='l')
+plot(drmc8.16$N~drmc8.16$r,xlab='r',ylab='N',type='l')
+
+###combine time series and test for state change
+Nt <- c(drmc8.16$N[-1:-10],drmc16.8$N[-1:-10])
+rt <- c(drmc8.16$r[-1:-10],drmc16.8$r[-1:-10])
+cb <- 2.57 #choatic boundary, 8-16 cycles
+r.cb <- (1:length(rt))[rt == min(rt[rt >= cb])]
+N.col <- c(rep(1,length(drmc8.16$N[-1:-10])),rep(2,length(drmc16.8$N[-1:-10])))
+par(mfrow=c(2,2))
+plot(rt,col=0);lines(rt,col='grey');points(rt,col='darkgrey',pch=19);abline(h=cb,col='red',lty=2)
+plot(Nt,type='p',pch=19,cex=0.75,col=N.col);abline(v=Nt[r.cb],col='red',lty=2)
+plot(Nt,type='l',lwd=0.5)
+
+###Nt = pitcher plant simulation
+Nt <- c(rnorm(100,25,2.5),rnorm(100,0,2.5))
+Nt[Nt<0] <- 0
+
+###Mean change point detection cpt.mean
+m.pelt <- cpt.mean(Nt,method='PELT',Q=1)
+m.bin <- cpt.mean(Nt,method='BinSeg',Q=1)
+summary(m.pelt);summary(m.bin)
+plot(Nt,pch=19);lines(Nt,col='darkgrey')
+abline(v=cpts(m.bin),col='blue',lty=2)
+abline(v=cpts(m.pelt),col='red',lty=2)
+
+###Variance change point detection cpt.var
+m.var <- cpt.var(Nt,know.mean=FALSE,mu=NA,test.stat='Normal')
+summary(m.var)
+plot(m.var)
+abline(v=cpts(m.var),col='blue',lty=2)
+
+###mean and variance changepoints cpt.meanvar
+m.mv <- cpt.meanvar(Nt,test.stat='Normal',shape=1)
+summary(m.mv)
+plot(Nt,col='darkgrey',pch=19);lines(Nt,col='darkgrey')
+abline(v=cpts(m.mv),col='red',lty=2)
+cpts.ts(m.mv)
+
+###Amanda's data
+###detrending with the average of the controls
+detrend <- function(x,dx){loess(x~dx,span=0.125)$residuals}
+run1 <- read.csv('/Users/Aeolus/Dropbox/Tipping Point MS/2014 UVM/summer2014_cleaned_data/run1_allreps.csv')
+run1.time <- run1[,1];run1 <- run1[,-1]
+run1 <- run1[,-40]
+run1.par <- read.csv('/Users/Aeolus/Dropbox/Tipping Point MS/2014 UVM/summer2014_cleaned_data/run1_par.csv')
+run1.type <- as.character(sapply(colnames(run1),function(x) strsplit(x,split='_')[[1]][3]))
+run1.temp <- run1[,run1.type=='temp']
+run1.do <- run1[,run1.type=='do']
+run1.plant <- as.character(sapply(colnames(run1.do),function(x) strsplit(x,split='_')[[1]][4]))
+run1.trt <- as.character(sapply(colnames(run1.do),function(x) strsplit(x,split='_')[[1]][2]))
+run1.detrend <- apply(run1.do,2,detrend,dx=apply(run1.do[,run1.trt=='control'],1,mean))
+
+for (i in 1:ncol(run1.do)){
+  png(file=paste('~/Desktop/run1Figs/',colnames(run1.do)[i],'.png',sep=''))
+  pairs(data.frame(time=run1.time,par1=run1.par[,2],par2=run1.par[,3],temp=run1.temp[,i],
+                   do=run1.do[,i],detrend=run1.detrend[,i]),
+        col=rainbow(length(run1.time)),cex=0.75)
+  dev.off()
+}
+
+###test for breakpoints in detrended data using variance method 
+library(changepoint)
+bp.trt <- sapply(colnames(run1.detrend),function(x) strsplit(x,split='_')[[1]][2])
+bp.mean <- apply(run1.detrend,2,cpt.mean)
+bp.var <- apply(run1.detrend,2,cpt.var)
+bp.mv <- apply(run1.detrend,2,cpt.meanvar)
+cpts.m <- unlist(lapply(bp.mean,cpts))
+cpts.v <- unlist(lapply(bp.var,cpts))
+cpts.mv <- unlist(lapply(bp.mv,cpts))
+pairs(data.frame(cpts.m,cpts.v,cpts.mv))
+###
+summary(aov(cpts.m~bp.trt))
+summary(aov(cpts.v~bp.trt))
+summary(aov(cpts.mv~bp.trt))
+plot(cpts.v~factor(bp.trt))
+plot(cpts.v~as.numeric(factor(bp.trt)))
+
+@ 
+
 \section{13 Sep 2014}
 Double checking the CCM functions using Lorenz attractor to reproduce
 Sugihara et al. 2012 Fig 3.
