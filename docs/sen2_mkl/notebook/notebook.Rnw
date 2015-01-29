@@ -54,17 +54,6 @@ f.A <- function(t,Amax=4,Aqe=0.3,LCP=20,c=100){
   return(out)
 }
 
-t <- seq(1,1440,by=1)
-par(mfrow=c(2,2))
-plot(PAR(t)~t,type='l')
-plot(f.A(t)~t,type='l')
-plot(f.A(t)~PAR(t),type='l')
-a <- 0.001
-plot(a*f.A(t)~PAR(t),type='l',ylim=c(0,15))
-for (a in seq(0.001,3.7,by=0.1)){
-  if (a == 1.001){lines(I(a*f.A(t))~PAR(t),col='red')}else{lines(I(a*f.A(t))~PAR(t))}
-}
-
 ###Diffusion
 
 ###Respiration
@@ -116,9 +105,20 @@ nds <- 2
 for (i in 1:nrow(para)){
   print(i)
   write.csv(o2.sim(nds,wo=para[i,2],ab=as.numeric(para[i,3:4]),Kw=para[i,5],d=para[i,6]),
-            file=paste('../data/senSim',i,'.csv',sep=''))
+            file=paste('../data/senSim',i,'.csv',sep=''),row.names=FALSE)
 }
 
+pdf('../results/o2sim_check.pdf')
+par(mfrow=c(2,3))
+for (j in c(2:7)){
+  sim <- read.csv(paste('../data/senSim',1,'.csv',sep=''))
+  plot(sim[,j],col=as.numeric(factor(para[,2]))[1],type='l',ylim=c(0,5),ylab=colnames(sim)[j])
+  for (i in 2:nrow(para)){
+    sim <- read.csv(paste('../data/senSim',i,'.csv',sep=''))
+    lines(sim[,j],col=as.numeric(factor(para[,2]))[i])
+  }
+}
+dev.off()
 
 @ 
 

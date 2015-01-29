@@ -57,6 +57,41 @@ Task List:
 \item Re-run sensativity analysis
 \end{enumerate}
 
+\section{8 Jan 2015}
+
+<<>>=
+hyb <- readLines('../data/hybrids.txt')
+hyb <- hyb[hyb!=""]
+marks <- (1:length(hyb))[substr(hyb,1,1)=='#']
+s1 <- hyb[(marks[2]+1):(marks[3]-1)]
+s2 <- hyb[(marks[3]+1):(marks[4]-1)]
+h1 <- hyb[(marks[4]+1):length(hyb)]
+
+###Process networks
+txt2net <- function(x){
+  xes <- sapply(x,function(x) strsplit(x,split='×'))
+  tab <- unique(as.character(unlist(xes)))
+  mat <- matrix(0,nrow=length(tab),ncol=length(tab))
+  rownames(mat) <- colnames(mat) <- tab
+  for (i in 1:length(xes)){
+    mat[tab==xes[[i]][1],tab==xes[[i]][2]] <- 1
+    mat[tab==xes[[i]][2],tab==xes[[i]][1]] <- 1
+  }
+  return(mat)
+}
+
+s1n <- txt2net(s1)
+s2n <- txt2net(s2)
+h1n <- txt2net(h1)
+
+###plot nets
+library(sna)
+par(mfrow=c(1,2))
+gplot(s1n,displaylabels=TRUE,gmode='graph')
+gplot(h1n,displaylabels=TRUE,gmode='graph')
+
+@ 
+
 \section{22 Oct 2014}
 
 Changepoint analysis package
