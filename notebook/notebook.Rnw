@@ -36,6 +36,53 @@
 
 \section{Lab Bench}
 
+\section{16 Nov 2015}
+
+How does varying m influence hysteresis?
+
+<<>>=
+
+## m0o2 <- read.csv('~/projects/HF/fastslow/results/sen_m01/m0o2.csv')
+## m1o2 <- read.csv('~/projects/HF/fastslow/results/sen_m01/m1o2.csv')
+
+rrm0 <- read.csv('~/projects/HF/fastslow/results/sen_m01/m0rr.csv')
+rrm1 <- read.csv('~/projects/HF/fastslow/results/sen_m01/m1rr.csv')
+
+rownames(rrm0) <- rrm0[,1]
+rownames(rrm1) <- rrm1[,1]
+
+rrm0 <- rrm0[,grep('ppSim_',colnames(rrm0))]
+rrm1 <- rrm1[,grep('ppSim_',colnames(rrm1))]
+
+all(colnames(rrm0) == colnames(rrm1))
+
+d01 <- na.omit(rrm0 - rrm1)
+
+p <- sapply(colnames(d01),function(x) strsplit(x,split='_')[[1]][-1])
+p <- apply(p,1,as.numeric)
+table(p[,3])
+
+@ 
+
+
+\section{15 Nov 2015}
+Scheffer model exploration:
+
+<<>>=
+f <- function(x,p=1,h=5){(x^p)/(x^p + h^p)}
+
+x <- 0;a <- 10;b <- 0.01;end <- 1000
+r <- 10;p <- 4;h <- 500
+
+plot(f(1:100,p,h))
+
+for (t in 2:end){x[t] <- x[t-1] + (a - b*x[t-1] + r*f(x[t-1],p,h))}
+plot(x,type='l',lwd=1);abline(h=a/b,lty=2)
+
+
+@ 
+
+
 \begin{itemize}
 \item generic_ews has issues fitting models to the Hawley and Molly
   datasets
