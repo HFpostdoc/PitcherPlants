@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2014.12.1)  13 JAN 2016 12:22
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2014.12.1)  13 JAN 2016 17:04
 entering extended mode
  %&-line parsing enabled.
 **\nonstopmode\input SarrModel-20140809-AME-MKL.tex
@@ -282,104 +282,109 @@ ne 174.
 [4]
 
 Package natbib Warning: Citation `Cameron1977' on page 5 undefined on input lin
-e 232.
+e 248.
 
 
 Package natbib Warning: Citation `Bradshaw1984' on page 5 undefined on input li
-ne 232.
+ne 248.
 
 
 Package natbib Warning: Citation `Sirota2013' on page 5 undefined on input line
- 232.
+ 248.
 
 
 Package natbib Warning: Citation `Peek2002' on page 5 undefined on input line 2
-34.
+50.
 
 
 Package natbib Warning: Citation `Small1972' on page 5 undefined on input line 
-241.
+257.
 
 
 Package natbib Warning: Citation `Farnsworth2008' on page 5 undefined on input 
-line 241.
+line 257.
 
 
 Package natbib Warning: Citation `Farnsworth2008' on page 5 undefined on input 
-line 252.
+line 268.
 
 [5]
 
 Package natbib Warning: Citation `Murphy1984' on page 6 undefined on input line
- 304.
+ 320.
 
 
 Package natbib Warning: Citation `Baiser2011' on page 6 undefined on input line
- 313.
+ 329.
 
 
 Package natbib Warning: Citation `Gallie1997' on page 6 undefined on input line
- 323.
+ 339.
 
 [6]
 
 Package natbib Warning: Citation `Ellison2002b' on page 7 undefined on input li
-ne 352.
+ne 368.
 
 
 Package natbib Warning: Citation `Farnsworth2008' on page 7 undefined on input 
-line 358.
+line 374.
 
 
 Package natbib Warning: Citation `Ellison2009' on page 7 undefined on input lin
-e 359.
+e 375.
 
 
 Package natbib Warning: Citation `Sirota2013' on page 7 undefined on input line
- 361.
+ 377.
 
 
 Package natbib Warning: Citation `Bradshaw1984' on page 7 undefined on input li
-ne 362.
+ne 378.
 
 
 Package natbib Warning: Citation `Plummer1964' on page 7 undefined on input lin
-e 363.
+e 379.
 
 
 Package natbib Warning: Citation `Ellison2006a' on page 7 undefined on input li
-ne 365.
+ne 381.
 
 
 Package natbib Warning: Citation `Wakefield2005' on page 7 undefined on input l
-ine 365.
+ine 381.
 
 
 Package natbib Warning: Citation `Ellison2002b' on page 7 undefined on input li
-ne 367.
+ne 383.
+
+[7]
+
+Package natbib Warning: Citation `Butler2007' on page 8 undefined on input line
+ 397.
 
 
-Package natbib Warning: Citation `Butler2007' on page 7 undefined on input line
- 381.
+Package natbib Warning: Citation `Givnish1984' on page 8 undefined on input lin
+e 398.
 
 
-Package natbib Warning: Citation `Givnish1984' on page 7 undefined on input lin
-e 382.
+LaTeX Warning: Reference `eq:a(t+1)-update' on page 8 undefined on input line 4
+23.
 
-[7] [8] [9] (./SarrModel-20140809-AME-MKL.bbl)
+[8] [9] (./SarrModel-20140809-AME-MKL.bbl)
 
 Package natbib Warning: There were undefined citations.
 
 [10] (./SarrModel-20140809-AME-MKL.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2568 strings out of 256216
- 31208 string characters out of 1917072
+ 2569 strings out of 256216
+ 31227 string characters out of 1917072
  95402 words of memory out of 1500000
- 5829 multiletter control sequences out of 10000+200000
+ 5830 multiletter control sequences out of 10000+200000
  20176 words of font info for 45 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  27i,18n,32p,365b,252s stack positions out of 5000i,500n,6000p,200000b,15000s
@@ -404,9 +409,9 @@ e/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/bluesky/
 cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texm
 f/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy
 10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy7.pfb>
-Output written on SarrModel-20140809-AME-MKL.pdf (10 pages, 165837 bytes).
+Output written on SarrModel-20140809-AME-MKL.pdf (10 pages, 170152 bytes).
 PDF statistics:
- 390 PDF objects out of 1000 (max. 8388607)
+ 404 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

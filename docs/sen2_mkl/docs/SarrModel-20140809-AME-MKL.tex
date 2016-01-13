@@ -200,24 +200,40 @@ of oxygen dynamics in pitcher-plant fluid}
 Term & Units & Interpretation\tabularnewline
 \hline 
 \noalign{\vskip\doublerulesep}
-$a_{t}$ & mg/L & Maximum amount of oxygen infused from the plant to the fluid at mid-day\tabularnewline
-$a_{min}^{\prime},\,a_{max}^{\prime}$ & mg/L & minimum or maximum possible augmentation of photosynthesis as a result
-of nutrient fertilization from organic-matter mineralization by the
-food web\tabularnewline
+
+\emph{t} & minutes & time (model iteration)\tabularnewline
+$x_{t}$ & mg/L & {[}O\textsubscript{2}{]}: concentration of oxygen in
+the pitcher fluid \tabularnewline
+
+\textbf{Photosynthesis} \tabularnewline
+$A_{t}$ & mg/L & Augmentation of oxygen infused from the plant to the
+fluid at mid-day\tabularnewline
+$a_{t}$ & mg/L & Augmentation of oxygen infused from the plant to the
+fluid at mid-day\tabularnewline
+$a_{min}^{\prime},\,a_{max}^{\prime}$ & mg/L & minimum or maximum
+possible augmentation of photosynthesis as a result of nutrient
+fertilization from organic-matter mineralization by the food
+web\tabularnewline
+
+\textbf{Respiration} \tabularnewline
+$w_{t}$ & mg & mass of prey remaining at time \emph{t}\tabularnewline
+$K_{w}$ & mg/min & half-saturation constant for prey
+consumption\tabularnewline \emph{m} & mg/L & amount of oxygen used for
+basal metabolism (respiration) of bacteria\tabularnewline
+
+\textbf{Nutrient Dynamics} \tabularnewline
+$n_{t}$ & mg/L & quantity of nutrients mineralized by decomposition; a
+function of $w_{t}$ and $x_{t}$\tabularnewline
+\emph{s} & dimensionless & steepenss of the sigmoidal curve relating
+nutrient mineralization to photosynthetic augmentation\tabularnewline
 \emph{d} & mg & inflection point of the sigmoidal curve relating nutrient mineralization
 to photosynthetic augmentation\tabularnewline
-$D_{t}$ & mg/L & Diffusion rate of oxygen from atmosphere into the pitcher fluid\tabularnewline
-f & 1/\emph{t} & constant adjusting sine wave of diurnal PAR for frequency of measurements\tabularnewline
-$K_{w}$ & mg/min & half-saturation constant for prey consumption\tabularnewline
-\emph{m} & mg/L & amount of oxygen used for basal metabolism (respiration) of bacteria\tabularnewline
-$n_{t}$ & mg/L & quantity of nutrients mineralized by decomposition; a function of
-$w_{t}$ and $x_{t}$\tabularnewline
-\emph{s} & dimensionless & steppenss of the sigmoidal curve relating nutrient mineralization
-to photosynthetic augmentation\tabularnewline
-\emph{t} & minutes & time (frequency of model iteration)\tabularnewline
-$w_{t}$ & mg & mass of prey remaining at time \emph{t}\tabularnewline
-$x_{t}$ & mg/L & {[}O\textsubscript{2}{]}: concentration of oxygen in the pitcher
-fluid \tabularnewline
+
+\textbf{Diffusion} \tabularnewline 
+$D_{t}$ & mg/L & Diffusion rate of oxygen from atmosphere into the
+pitcher fluid\tabularnewline f & 1/\emph{t} & constant adjusting sine
+wave of diurnal PAR for frequency of measurements\tabularnewline
+
 \hline 
 \end{tabular*}
 \end{table}
@@ -386,8 +402,8 @@ photosynthesis (\emph{a} in Equation \ref{eq:1a:FullModel}):
 
 \begin{subequations}
 \begin{align}
-a^{\prime}=\frac{a_{max}^{\prime}-a_{min}^{\prime}}{1+exp(-[sn(t)-d])}+a_{min}^{\prime}\label{eq:a-prime-augmentation}\\
-a(t+1)=a(t)\,\times\,a^{\prime}(t)\label{eq:a(t+1)-update}
+a^{\prime}=\frac{a_{max}^{\prime}-a_{min}^{\prime}}{1+e^{-s \cdot n_t -d}}+a_{min}^{\prime}\label{eq:a-prime-augmentation}\\
+a_{t+1}=a_{t}\,\times\,a^{\prime}_t\label{eq:a_{t+1}-update}
 \end{align}
 
 
@@ -432,7 +448,7 @@ Prey added ($w_{0})$ & 0, 1, 5 mg/day\tabularnewline
 \emph{a} & 5, 10, 20, 40 mg\tabularnewline
 \emph{b} & 1, 2, 4, 8 $\mathrm{mg\,\cdot\,mg^{-1}\,\cdot\,d^{-1}}$\tabularnewline
 $K_{w}$ & 0.001, 0.01, 0.1 mg/min\tabularnewline
-\emph{d} & -1, -2, -3, -4, -5 mg\tabularnewline
+\emph{d} & 1, 2, 3, 4, 5 mg\tabularnewline
 \hline 
 \end{tabular}
 \end{table}
