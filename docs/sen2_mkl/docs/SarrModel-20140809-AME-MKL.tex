@@ -64,23 +64,27 @@ Article type: \textbf{Article}
 
 \part{Abstract}
 
-text - 200 words, 1 paragraph, Using sensitivity analyses we identify
-model parameters that most strongly control the dynamics of the pitcher
-plant ecosystem and show that the system can eventually overcome its
-hysteresis and return to an oligotrophic state once organic-matter
-input is stopped. 
-
-\pagebreak{}
-
+text - 200 words, 1 paragraph, 
 
 \begin{itemize}
-\item 
-\item 
-\item 
+\item Sudden, rapid ecosystem changes are particularly
+  troubling when they are also followed by slow return rates or shifts
+  to entirely new states. Studies of such dynamics are hampered by
+  spatial and temporal scales of most terrestrial and aquatic
+  ecosystems. 
+\item Here, we use the micro-ecosystem associated with the carnivorous
+  eastern pitcher plant (\textit{Sarracenia purpurea}) to explore the
+  factors that contribute to ecosystem hysteresis after strong
+  perturbations from nutrient addition.
+\item Using sensitivity analyses we identify model parameters that
+  most strongly control the dynamics of the pitcher plant ecosystem
+  and show that the system can eventually overcome its hysteresis and
+  return to an oligotrophic state once organic-matter input is
+  stopped.
 \end{itemize}
 
-
 \pagebreak{}
+
 
 \part*{Introduction}
 
@@ -172,7 +176,7 @@ differential equations:\begin{subequations}
 
 \begin{align}
 x_{t+1}=\underbrace{a_{t}A_{t}}_{\mathrm{Photosynthesis}}-\underbrace{\left\{ m+a_{t}\left[\frac{w_{t-1}}{K_{w}+w_{t-1}}\right]\right\} }_{f(w,x,t)}+\underbrace{D_{t}(x_{t})}_{g(x,t)}\label{eq:1a:FullModel}\\
-a_{t+1}=a_{t}\times\left\{ \frac{a{}_{max}^{\prime}-a{}_{min}^{\prime}}{1+\exp(-s\cdot n_{t}-d)}+a{}_{min}^{\prime}\right\} \label{eq:1b:FullModelIterate}
+a_{t+1}=a_{t}\times\left\{ \frac{a{}_{max}^{\prime}-a{}_{min}^{\prime}}{1+e^{-s\cdot n_{t}-d}}+a{}_{min}^{\prime}\right\} \label{eq:1b:FullModelIterate}
 \end{align}
 \end{subequations}In this model, the pitcher-plant fluid is oxygenated
 by photosynthesis (\emph{A\textsubscript{\emph{t}}}), with \emph{A\textsubscript{max}}
@@ -487,7 +491,7 @@ to other systems
 
 \part*{Literature Cited}
 
-\bibliographystyle{amnatnat.bst}
-\bibliography{ecology.bib}
+\bibliographystyle{amnatnat}
+\bibliography{ecology}
 
 \end{document}
