@@ -1,0 +1,540 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=2.54cm,bmargin=2.54cm,lmargin=2.54cm,rmargin=2.54cm}
+\setcounter{secnumdepth}{-2}
+\setcounter{tocdepth}{-2}
+\usepackage{color}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[authoryear]{natbib}
+\usepackage{subscript}
+\doublespacing
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newcommand{\lyxaddress}[1]{
+\par {\raggedright #1
+\vspace{1.4em}
+\noindent\par}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{babel}
+\usepackage{lineno}
+\usepackage{amsmath}
+
+\linenumbers
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{Regime shifts and alternative states in the \emph{Sarracenia} microecosystem}
+
+
+\author{Aaron M. Ellison,\textsuperscript{1,{*}} Benjamin Baiser,\textsuperscript{1,2}
+Matthew K. Lau,\textsuperscript{1} and Nicholas J. Gotelli\textsuperscript{3}}
+
+\maketitle
+
+\lyxaddress{\textsuperscript{1}Harvard Forest, Harvard University, 324 North
+Main Street, Petersham, Massachusetts 01366; \textsuperscript{2}Department
+of Wildlife Ecology and Conservation, University of Florida, Gainesville,
+Florida 32611; \textsuperscript{3}Department of Biology, University
+of Vermont, Burlington, Vermont 05405}
+
+\emph{Keywords}: alternative states, model system, organic-matter
+loading, regime shifts, \emph{Sarracenia purpurea}
+
+Article type: \textbf{Article}
+
+\pagebreak{}
+
+
+\part{Abstract}
+
+text - 200 words, 1 paragraph, 
+
+\begin{itemize}
+\item Sudden, rapid ecosystem changes are particularly
+  troubling when they are also followed by slow return rates or shifts
+  to entirely new states. Studies of such dynamics are hampered by
+  spatial and temporal scales of most terrestrial and aquatic
+  ecosystems. 
+\item Here, we use the micro-ecosystem associated with the carnivorous
+  eastern pitcher plant (\textit{Sarracenia purpurea}) to explore the
+  factors that contribute to ecosystem hysteresis after strong
+  perturbations from nutrient addition.
+\item Using sensitivity analyses we identify model parameters that
+  most strongly control the dynamics of the pitcher plant ecosystem
+  and show that the system can eventually overcome its hysteresis and
+  return to an oligotrophic state once organic-matter input is
+  stopped.
+\end{itemize}
+
+\pagebreak{}
+
+
+\part*{Introduction}
+
+Regime shifts in ecological systems are defined as rapid changes in
+the spatial or temporal dynamics of a more-or-less stable system caused
+by slow, directional changes in one or more underlying state variables
+\citep{Scheffer2001,Scheffer2009}. Ecological systems in which the
+occurrence of regime shifts is unambiguous are uncommon, primarily
+because long time series of observations are required to identify
+both stability of each state and a breakpoint between them \citep{Bestelmeyer2011}.
+Detailed modeling and decades of observations and experiments have
+led to a thorough understanding of a canonical example of an ecological
+regime shift: the rapid shift from oligotrophic to eutrophic states
+in lakes \citep{Carpenter2006a,Carpenter2011}. 
+
+Oxygen dynamics in lakes can be described using a simple model that
+yields both alternative states and hysteresis in the shift between
+them \citep{Scheffer2001}: 
+
+\begin{equation}
+\frac{dx}{dt}=a-bx+rf(x)\label{eq:0:MinimalModel}
+\end{equation}
+In this model, the observed variable \emph{x} (e.g., nutrient concentration
+in a lake) is positively correlated with state variable \emph{a} (e.g.,
+rate of nutrient loading) and negatively correlated with state variable
+\emph{b} (e.g., rate of nutrient removal). A positive feedback loop,
+\emph{rf}(\emph{x}) (in the lake model, this is the rate of nutrient
+recycling between the lake sediments and water column). If \emph{r
+}> 0 and $\{rf\prime(x)\}>b$, there will be more than one equilibrium
+point (i.e., stable state); the function $f(x)$ determines the shape
+of the switch between the states and the degree of hysteresis \citep{Scheffer2001}. 
+
+Models of lake ecosystems and their food webs, and associated empirical
+data also have revealed that returning lakes to the more ``desired''
+oligotrophic state can be very slow\textemdash on the order of decades
+to centuries\textemdash (ref: Contamin and Ellison; others from Carpenter
+group) and depends not only on slowing or reversing the directional
+changes in underlying state variables but also on the internal feedback
+dynamics of the system (i.e., the dynamics of $f(x)$ in Equation
+\ref{eq:0:MinimalModel}). Other systems, including fisheries (ref:
+Carpenter PNAS) and ... (ref; XXX et al. PLoS One) have provided some
+support for these model results (ref: XXX et al. PLoS One), both in
+terms of dynamics and duration.
+
+In the last several years, many researchers have suggested that a
+wide range of ecological systems are poised to ``tip'' into new
+regimes (refs...), or even that we are approaching a planetary tipping
+point. (ref: XXX, but see YYY). If, as in lakes, either changes in
+the underlying state variables causing these regime shifts or the
+regime shifts themselves span decades, ecological insights into their
+causes and consequences will accrue relatively slowly. More rapid
+progress both in understanding the mechanisms driving ecological regime
+shifts and in determining how to reverse them requires well-understood
+model systems that can be experimentally manipulated over much shorter
+time scales.
+
+Recently, we have shown experimentally that organic-matter loading
+(i.e., prey addition) can cause a shift from oligotrophic to eutrophic
+conditions in naturally-occurring microecosystems: the water and bacteria-filled
+modified leaves of the northern (or purple) pitcher plant, \emph{Sarracenia
+purpurea} (ref: Sirota). Because bacteria that reproduce rapidly drive
+the nutrient cycling dynamics of the \emph{Sarracenia} microecosystem
+(ref: Butler et al. 2008), the system states change in days rather
+than years or decades. In addition to introducing a new experimental
+system for regime shifts and alternative states, Sirota et al. (2013)
+sketched a model that, in extreme cases, could lead to a rapid (regime)
+shift from oligotrophic to eutrophic conditions in pitcher-plant leaves.
+Here, we develop fully the model of the \emph{Sarracenia} microecosystem,
+introduce more realism into the underlying environmental drivers of
+the model, use sensitivity analysis to identify the parameters that
+most strongly control the dynamics of the system, and show that the
+system eventually can overcome its hysteresis and return to an oligotrophic
+state once organic-matter input is stopped. 
+
+
+\part*{The \emph{Sarracenia} microecosystem}
+
+Sketch of the biology of the system
+
+
+\part*{The Model}
+
+The detritus-based pitcher-plant food web forms in the small pools
+of water that accumulate in living and photosynthesizing modified
+leaves (``pitchers'') of \emph{Sarracenia purpurea}. Thus, our model
+of this food web includes feedbacks between the food web and the plant
+itself \citep{Bradshaw1984}. The full model is a pair of coupled
+differential equations:\begin{subequations}
+
+\begin{align}
+x_{t+1}=\underbrace{a_{t}A_{t}}_{\mathrm{Photosynthesis}}-\underbrace{\left\{ m+a_{t}\left[\frac{w_{t-1}}{K_{w}+w_{t-1}}\right]\right\} }_{f(w,x,t)}+\underbrace{D_{t}(x_{t})}_{g(x,t)}\label{eq:1a:FullModel}\\
+a_{t+1}=a_{t}\times\left\{ \frac{a{}_{max}^{\prime}-a{}_{min}^{\prime}}{1+e^{-s\cdot n_{t}-d}}+a{}_{min}^{\prime}\right\} \label{eq:1b:FullModelIterate}
+\end{align}
+\end{subequations}In this model, the pitcher-plant fluid is oxygenated
+by photosynthesis (\emph{A\textsubscript{\emph{t}}}), with \emph{A\textsubscript{max}}
+augmented by prey mineralization (\emph{a\textsubscript{\emph{t}}}),
+as well as some diffusion from the atmosphere (\emph{g}(\emph{x,t})).
+Oxygen is lost from the fluid as prey is decomposed by the food web
+(\emph{f}(\emph{w,x,t})). A full list of model parameters is given
+in Table \ref{tab:ModelTerms}.
+
+\begin{table}
+\begin{raggedright}
+\protect\caption{\label{tab:ModelTerms}Terms, units, and interpretation for the model
+of oxygen dynamics in pitcher-plant fluid}
+
+\par\end{raggedright}
+
+\centering{}%
+\begin{tabular*}{0.75\paperwidth}{@{\extracolsep{\fill}}cc>{\raggedright}p{0.5\textwidth}}
+\hline 
+\noalign{\vskip\doublerulesep}
+Term & Units & Interpretation\tabularnewline
+\hline 
+\noalign{\vskip\doublerulesep}
+
+\emph{t} & minutes & time (model iteration)\tabularnewline
+$x_{t}$ & mg/L & {[}O\textsubscript{2}{]}: concentration of oxygen in
+the pitcher fluid \tabularnewline
+
+\textbf{Photosynthesis} \tabularnewline
+$A_{t}$ & mg/L & Augmentation of oxygen infused from the plant to the
+fluid at mid-day\tabularnewline
+$a_{t}$ & mg/L & Augmentation of oxygen infused from the plant to the
+fluid at mid-day\tabularnewline
+$a_{min}^{\prime},\,a_{max}^{\prime}$ & mg/L & minimum or maximum
+possible augmentation of photosynthesis as a result of nutrient
+fertilization from organic-matter mineralization by the food
+web\tabularnewline
+
+\textbf{Respiration} \tabularnewline
+$w_{t}$ & mg & mass of prey remaining at time \emph{t}\tabularnewline
+$K_{w}$ & mg/min & half-saturation constant for prey
+consumption\tabularnewline \emph{m} & mg/L & amount of oxygen used for
+basal metabolism (respiration) of bacteria\tabularnewline
+
+\textbf{Nutrient Dynamics} \tabularnewline
+$n_{t}$ & mg/L & quantity of nutrients mineralized by decomposition; a
+function of $w_{t}$ and $x_{t}$\tabularnewline
+\emph{s} & dimensionless & steepenss of the sigmoidal curve relating
+nutrient mineralization to photosynthetic augmentation\tabularnewline
+\emph{d} & mg & inflection point of the sigmoidal curve relating nutrient mineralization
+to photosynthetic augmentation\tabularnewline
+
+\textbf{Diffusion} \tabularnewline 
+$D_{t}$ & mg/L & Diffusion rate of oxygen from atmosphere into the
+pitcher fluid\tabularnewline f & 1/\emph{t} & constant adjusting sine
+wave of diurnal PAR for frequency of measurements\tabularnewline
+
+\hline 
+\end{tabular*}
+\end{table}
+
+
+
+\section*{Photosynthesis}
+
+In the absence of the foodweb, baseline oxygen concentration {[}O\textsubscript{2}{]}
+in the pitcher water, is determined by diurnal photosynthesis: pitchers
+take up CO\textsubscript{2} from the air or water and release O\textsubscript{2}
+back into it \citep{Cameron1977,Bradshaw1984,Sirota2013}. Photosynthesis
+is first modeled as $A=A_{max}[1-\exp(-A_{qe}[\mathrm{PAR-LCP}])]$
+(after \citealt{Peek2002}), where PAR is photosynthetically active
+radiation, which normally ranges from 0 - 2500 $\mu\mathrm{mol\,\cdot\,m^{-2}\,\cdot\,s^{-1}}$
+and which is modeled as a truncated dirunal sine-wave (PAR = 0 at
+night, a sine-wave during the day: \textbf{\textcolor{magenta}{\ref{fig:PAR and A}}});
+\emph{A} is photosynthetic rate (in $\mu\mathrm{mol\:CO_{2}\,\cdot\,m^{-2}\,\cdot\,s^{-1}}$);
+\emph{A}\textsubscript{max} is the maximum photosynthetic rate of
+an pitcher plant that has not captured or processed any prey ($\bar{x}\approx4\,\mu\mathrm{mol\:CO_{2}\,\cdot\,m^{-2}\cdot\,s^{-1}}$;
+\citealt{Small1972,Farnsworth2008}); \emph{A\textsubscript{\emph{qe}}}
+is the quantum yield ($\approx0.3$: the initial slope, at low light,
+of the \emph{A} vs. PAR curve); and LCP is the light compensation
+point: the x-intercept when A = 0, $\approx20\,\mathrm{mol\,\cdot\,m^{-2}\,\cdot\,s^{-1}}$. 
+
+Since we are interested in oxygen dynamics in volumes of water, we
+convert A from $\mu\mathrm{mol\:CO_{2}\,\cdot\,m^{-2}\cdot\,s^{-1}}$
+to mg O\textsubscript{2} / L by noting that there is a 1:1 relationship
+between $\mu$mol CO\textsubscript{2} and $\mu$mol O\textsubscript{2}
+in phothosynthesis; that 1 $\mu$mol O\textsubscript{2}= 32 $\mu\mathrm{g\,O_{2}\,\cdot\,m^{-2}\,\cdot\,s^{-1}}$;
+and that the specific leaf area of \emph{S. purpurea }$\approx$ 70
+cm\textsuperscript{2}/g \citep{Farnsworth2008}. Thus, O\textsubscript{2}
+production $\approx$ 0.21 $\mu\mathrm{g\,O_{2}\,\cdot\,g\:leaf^{-1}\,\cdot\,s^{-1}}$.
+The average 5-ml leaf has a surface area of 40 cm\textsuperscript{2}
+and weighs 0.5 g, and a 1-L leaf would weigh 10g. Thus, O\textsubscript{2}
+production from photosynthesis $\approx$ 2.1 $\mathrm{mg\,O_{2}\,\cdot\,L^{-1}\,\cdot\,s^{-1}}$
+. 
+
+It follows that our functions of PAR and \emph{A}, taking into account
+LCP, are:
+
+\begin{subequations}
+
+\begin{equation}
+\mathrm{PAR}=c\sin(2\pi ft)\label{eq:PAR as sinewave}
+\end{equation}
+\begin{equation}
+A=\begin{cases}
+a\,\cdot\,A_{max}[1-\exp(-0.3[\mathrm{PAR}-20])] & :\mathrm{PAR}\geq20\\
+0 & :\mathrm{PAR}<20
+\end{cases}\label{eq:O2 conditional}
+\end{equation}
+
+
+\end{subequations}
+
+In Eq. \ref{eq:PAR as sinewave}, the amplitude \emph{c} is maximum
+PAR at mid-day; the constant \emph{f} adusts for the frequency of
+measurements. Since our model updates every minute, \emph{f} = 1/1440
+(the reciprocal of the number of minutes per day). Without loss of
+generality, our model runs start at sunrise (\emph{t} = 1), day-length
+= 12 hours = 720 minutes, and PAR(t) is trunctated = 0 for $t\in\{721,\,1440\}$.
+In Eq. \ref{eq:O2 conditional}, \emph{a} is the amount that photosynthetic
+rate can be increased as a result of nutrients provided to the plant
+as prey is mineralized by the food web (\textbf{\textcolor{magenta}{\ref{fig:PAR and A}}}).
+
+\begin{figure}
+\protect\caption{\label{fig:PAR and A}Four-part figure. (a) truncated sine wave of
+PAR; (b) observed A (photosynthesis); (c) photosynthesis as a function of PAR w/o food web; (d)
+A as a function of PAR with mineralization augmentation}
+
+<<>>=
+
+source('~/Projects/HF/PitcherPlantModel/src/global.R')
+p1 <- pitcherPlantSim(10,foodWeight=2,d=-1)
+p1.y <- 'Photosynthesis'
+par(mfrow=c(1,1))
+plot(p1[,p1.y],type='p',ylab=p1.y,xlab='Time (min)',col=rainbow(nrow(p1)),pch=19,cex=0.2)
+
+p1 <- pitcherPlantSim(10,foodWeight=0)
+p1.y <- 'Photosynthesis'
+p2 <- PAR(10)
+p3 <- pitcherPlantSim(10,foodWeight=c(0,rep(5,2),rep(0,7)),d=0)
+labels2.p2 <- seq(min(p2),max(p2),length=5)
+axis1.p2 <- seq(0,max(p1[,p1.y]),length=length(labels2.p2))
+
+par(mfrow=c(2,2))
+plot(p1[,p1.y],type='p',ylab=p1.y,xlab='Time (min)',col=rainbow(nrow(p1)),pch=19,cex=0.2)
+text(100,28,labels='A')
+plot(p1[,p1.y]~p2,pch=19,cex=0.2,col=rainbow(length(p2)),xlab='PAR',ylab='') 
+text(-95,28,labels='B')
+plot(p3[,p1.y],type='p',ylab=p1.y,xlab='Time (min)',col=rainbow(nrow(p1)),pch=19,cex=0.2)
+text(100,38,labels='C')
+plot(p3[,p1.y]~p2,pch=19,cex=0.2,col=rainbow(length(p2)),xlab='PAR',ylab='') 
+text(-95,38,labels='D')
+
+
+@ 
+
+\end{figure}
+
+
+
+\section*{Respiration}
+
+Biological oxygen demand (\textsc{bod}) of bacteria as they decompose
+prey rapidly depletes {[}O\textsubscript{2}{]} in the pitcher fluid.
+Although different {[}O\textsubscript{2}{]} may favor different numbers
+of either aerobic or anaerobic bacteria in the pitcher fluid, the
+efficiency of organic-matter decomposition by either type of bacteria
+is roughly equal \citep{Murphy1984}, so we assume sufficient numbers
+of bacteria to decompose prey at a fixed, negative exponential rate:
+\begin{equation}
+w(t)=ae^{-b[w_{0}t]}\label{eq:decomp-negative exponential}
+\end{equation}
+
+
+Biologically, we take this to mean that easily digested parts of insect
+prey, such as fat bodies, are processed quickly, whereas the more
+recalcitrant proteins and chitins break down more slowly \citep{Baiser2011}.
+Field observations have shown that the soft parts of a single $75-\mu g$
+wasp can be comsumed completely over a 48-hour period in a pitcher
+with 5 ml of fluid. Thus, the baseline parameters for Equation \ref{eq:decomp-negative exponential}
+were set at \emph{a }= 20 mg and $b\,=\,4\,\mathrm{mg\,\cdot\,mg^{-1}\,\cdot\,d^{-1}}$\emph{.
+}Because we fix the decomposition rate of given mass of prey, to maintain
+a 48-hour decomposition time of a single $75-\mu g$ wasp while varying
+\emph{a} and \emph{b} in Equation \ref{eq:decomp-negative exponential},
+it is necessary to fix $\frac{a}{b}=5$. Finally, because \emph{S.
+purpurea} produces digestive enzymes such as proteases and chitinases
+only for a short period of time early in leaf growth \citep{Gallie1997},
+we ignore their effects here.
+
+Oxygen used up by the bacteria in prey consumption (= 1 - \textsc{bod})
+was modeled as a saturating function of the remaining prey. The proportion
+of the prey remaining = 1 \textendash{} the amount of prey decomposed,
+which is a function of the maximum amount of oxygen at mid-day (\emph{a}
+in Equation \ref{eq:1a:FullModel}, iteratively augmented by $a^{\prime}$from
+Equation \ref{eq:1b:FullModelIterate} and as detailed below in Equations
+\ref{eq:prey-mineralization}, \ref{eq:a-prime-augmentation}); the
+mass of prey (\emph{w}); a half-saturation constant defining the prey-consumption
+curve ($K_{w}$) that determines how much prey is left over each ``day''
+of the iterated model; and the amount of oxygen needed by the bacteria
+for basal metabolism. Hence:
+\begin{equation}
+\mathrm{O}_{2}\;\mathrm{lost}(t)=f(w,x,t)=m+a\left[\frac{w(t-1)}{K_{w}+w(t-1)}\right]\label{eq:O2lost-decomp}
+\end{equation}
+
+
+In the sensitivity analysis, \emph{m} in Equation \ref{eq:O2lost-decomp}
+was fixed = 1, whereas \emph{K\textsubscript{w}} varied.
+
+
+\section*{Diffusion and oxygenation}
+
+{[}O\textsubscript{2}{]} increases in the pitcher fluid in three
+ways. Some oxygen diffiuses from the atmosphere into the pitcher fluid,
+but because this happens only at the surface of the pitcher fluid,
+and the ``mouth'' of the pitcher is at least an order of magnitude
+smaller than the surface area of the pitcher itself \citep{Ellison2002b};
+we ignore this term and focus on re-oxygenation through baseline oxgyen
+production and prey-augmented photosynthesis (Equation \ref{eq:O2 conditional}).
+The latter results from a positive feedback loop in Equation \ref{eq:1b:FullModelIterate}
+that links prey mineralization to the uptake of mineralized nutrients
+by the plant, and the subsequent usage of these nutrients to increase
+photosynthetic rate of the pitcher \citep{Farnsworth2008}. Ants and
+wasps, the most common insect prey of pitcher plants \citep{Ellison2009},
+are $\approx$50\% C, have a C:N ratio of 6:1, and N:P:K ratios of
+$\approx$12:1.5:0.9 \citep{Sirota2013}. As the prey are mineralized,
+the nutrients that are released, especially NH\textsubscript{4}\citep{Bradshaw1984}
+and P (as \textsuperscript{32}P: \citealt{Plummer1964}), are absorbed
+rapidly by the pitcher. Photosynthesis by \emph{Sarracenia} is limited
+by both N and P (and stoichometrically by N: \citep{Ellison2006a,Wakefield2005}),
+and photosynthetic rates of pitcher plants significantly increase
+following N additions \citep{Ellison2002b}. We model these two processes
+\textendash{} nutrient release and augmentation of photosynthesis
+\textendash{} with a pair of equations.
+
+First, nutrient release following bacterial mineralzation is a function
+of prey mass (\emph{w}) and available oxygen (\emph{x}) used by bacteria
+to break down and mineralize the prey:
+\begin{equation}
+n(t)=\frac{w(t)x(t)}{c}\label{eq:prey-mineralization}
+\end{equation}
+
+
+where \emph{c} is a scaling constant (we set \emph{c} = 100).
+
+Nutrients absorbed by pitchers and not stored for future use \citep{Butler2007}
+could be used to make additional enzymes for photosynthesis \citep{Givnish1984},
+and we model uptake as a signmoidal (saturating) relationship betwen
+additional nutrients absorbed and augmentation of the peak rate of
+photosynthesis (\emph{a} in Equation \ref{eq:1a:FullModel}): 
+
+\begin{subequations}
+\begin{align}
+a^{\prime}=\frac{a_{max}^{\prime}-a_{min}^{\prime}}{1+e^{-s \cdot n_t -d}}+a_{min}^{\prime}\label{eq:a-prime-augmentation}\\
+a_{t+1}=a_{t}\,\times\,a^{\prime}_t\label{eq:a_{t+1}-update}
+\end{align}
+
+
+\end{subequations}
+
+In Equation \ref{eq:a-prime-augmentation}, $a_{min}^{\prime}$ is
+the minimum possible augmentation of photosynthesis, which we set
+= 0; $a_{max}^{\prime}$is the maximum possible augmentation, which
+we set = 2; \emph{s} is the steepness of the increase (set = 10);
+and \emph{d} is the inflection point of the curve (= 0.5). Augmentation
+evolves as the day's leftover prey (i.e., that not completely broken
+down in a given day) accumulates (within the \emph{n}(\emph{t}) term),
+and is mineralized on subsequent days. We note that modeling this
+as discrete day-to-day carry-over is an artefact of iterations in
+computer models. In real pitchers, decomposition is more continuous.
+Similarly, the model updates the value of $a\prime$ once each ``day''
+using Equation \ref{eq:a(t+1)-update} because conversion of nutrients
+to new photosynthetic enzymes is assumed to occur slowly relatively
+to bacterial decomposition itself.
+
+
+\section*{Sensitivity analysis}
+
+Five paramters were varied over a wide range of values to explore
+the sensitivity of the model to prey input (mass added each day);
+the decomposition rate (\emph{a} and \emph{b} in Equation \ref{eq:decomp-negative exponential}),
+the half-saturation constant for prey consumption ($K_{w}$ in Equation
+\ref{eq:O2lost-decomp}) and the inflection point \emph{d} for augmentation
+of photosynthesis in Equation \ref{eq:a-prime-augmentation}. The
+range of values for each of these parameters is given in Table \ref{tab:Sensitivity analysis parameter ranges}. 
+
+\begin{table}
+\centering{}\protect\caption{\label{tab:Sensitivity analysis parameter ranges}Values of parameters
+used in the sensitivity analyses. Note that the values of \emph{a}
+and \emph{b} must change in concert to maintain a constant ratio of
+5 so that prey decomposition is complete within 48 hours}
+\begin{tabular}{cc}
+\hline 
+Variable & values\tabularnewline
+\hline 
+Prey added ($w_{0})$ & 0, 1, 5 mg/day\tabularnewline
+\emph{a} & 5, 10, 20, 40 mg\tabularnewline
+\emph{b} & 1, 2, 4, 8 $\mathrm{mg\,\cdot\,mg^{-1}\,\cdot\,d^{-1}}$\tabularnewline
+$K_{w}$ & 0.001, 0.01, 0.1 mg/min\tabularnewline
+\emph{d} & 1, 2, 3, 4, 5 mg\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+
+
+Models were run for each of the possible combinations of $\{w_{0},\,a,\,b\,K_{w}\,d\}$\textemdash note
+that the joint set of \emph{a} and \emph{b} includes only 4 combinations:
+\{(5,1), (10,2), (20,4), (40,8)\}\textemdash for a total of 180 model
+runs.
+
+
+\part{Results}
+
+
+\section*{Model dynamics}
+
+Illustrative examples (?spark charts or some subset of them) illustrating
+the range of possible outcomes - controls, intermediate dynamics,
+collapse, recovery.
+
+This should include time-series plots as well as phase-space plots.
+Examples in Sirota et al. PNAS supplement, but I think we can do better/differently
+here.
+\begin{itemize}
+\item Different state = change in O2 production where the non-transient
+maximum values are different from control
+\end{itemize}
+
+\section*{Sensitivity analysis}
+
+Which parameters drive the dynamics? Multivariate plots, additional
+analyses, ...
+\begin{itemize}
+\item Transient = returning to the maximum
+\item Prey: increases crashes
+\item D: transient when D = -1, stable or crashing otherwise
+\item K: increases the buffering of the system, increases return rates,
+increases the number of stable states
+\item ab: alters transient return rates, alters stable point
+\end{itemize}
+
+\part*{Discussion}
+
+1. Why we need model systems for regime shifts and alternative states
+
+2. Similarities and differences between pitcher plants, lakes, and
+other ecological systems in which regime shifts have been identified
+and explored
+
+3. Insights from pitcher plant system and model that could be applied
+to other systems
+
+
+\section*{\pagebreak{}}
+
+
+\part*{Literature Cited}
+
+\bibliographystyle{amnatnat}
+\bibliography{ecology}
+
+\end{document}
